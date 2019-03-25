@@ -3,7 +3,7 @@
  */
 
 /**
- * @author holly
+ * @author Group 13
  *
  */
 public class Test {
@@ -15,10 +15,6 @@ public class Test {
 	{
 		Tree test = new Tree();
 		test.createAlphabetTree();
-		test.printTree(2);
-		System.out.println();
-		test.printTree(1);
-		System.out.println();
-		test.printTree(3);
+		test.displayTree(test.getRoot());
 	}
 }

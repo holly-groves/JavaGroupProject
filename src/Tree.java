@@ -3,7 +3,7 @@
  */
 
 /**
- * @author holly
+ * @author Group 13
  *
  */
 public class Tree {
@@ -35,6 +35,11 @@ public class Tree {
 		root = rootNode;
 	}
 	
+	/**
+	 * adds all the letters to a binary tree using ascii values (lowercase)
+	 * @param letterId int containing the ascii value of the letter to be added
+	 * @return boolean containing whether or not the letter has been added
+	 */
 	public boolean addLetterToTree(int letterId)
 	{
 		TreeNode newNode;
@@ -104,6 +109,11 @@ public class Tree {
 		return complete;
 	}
 	
+	/**
+	 * finds a node wihtin the binary tree
+	 * @param requiredId int containing the id of the node to be found
+	 * @return TreeNode containing a reference to the found node (if it is found)
+	 */
 	public TreeNode findNode(int requiredId)
 	{
 		TreeNode current = root;
@@ -142,6 +152,11 @@ public class Tree {
 		return current;
 	}
 	
+	/**
+	 * creates the binary tree of the alphabet in a way so the tree is balanced to minimise search times
+	 * the ascii values of the lowercase letters are used to make comparing id easier
+	 * also as most words begin with lowercase letters, this will make finding translations easier
+	 */
 	public void createAlphabetTree()
 	{
 		char current = "m".charAt(0); //sets m as a character 
@@ -152,6 +167,11 @@ public class Tree {
 		createBalancedTree(currentAscii+7, 4); //creates the right of the tree
 	}
 	
+	/**
+	 * Recursive method to add the letters to the tree in the right order to make the tree balanced
+	 * @param current int containing the current ascii value to be dealt with
+	 * @param dif int containing the difference to be used in adding things to the tree
+	 */
 	public void createBalancedTree(int current, int dif)
 	{
 		if (current > 96 && current < 107 && dif > 0) //this deals with the left side of the tree
@@ -246,7 +266,7 @@ public class Tree {
 			printDetails(currentNode);
 		}
 	}
-
+	
 	/**
 	 * displays the details of the node 
 	 * @param node TreeNode to be displayed
@@ -256,5 +276,45 @@ public class Tree {
 		int id = node.getLetterId();
 		String letter = Character.toString((char) id);
 		System.out.println(letter);
+	}
+	
+	/**
+	 * Method used to display all the dictionaries
+	 * @param root TreeNode containing the root of the tree
+	 */
+	public void displayTree(TreeNode root) //METHOD NEEDS FIXED (Michael)
+	{
+//		TreeNode current = root;
+//		boolean complete = false;
+//
+//		while (!complete)
+//		{
+//			if (current == null)
+//			{
+//				complete = true;
+//			}
+//			else
+//			{
+//				TreeNode currentLeft = current.getLeft();
+//				TreeNode currentRight = current.getRight();
+//
+//				if (currentLeft != null)
+//				{
+//					displayTree(currentLeft);
+//				}
+//
+//				int id = current.getLetterId();
+//				String engToSpan = current.getEngToSpanFile();
+//				String spanToEng = current.getSpanToEngFile();
+//				System.out.println("[" + id + "] " + engToSpan + " - " + spanToEng);
+//
+//				if (currentRight != null)
+//				{
+//					displayTree(currentRight);
+//				}
+//
+//				complete = true;
+//			}
+//		}
 	}
 }
