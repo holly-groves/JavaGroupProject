@@ -127,6 +127,8 @@ public class Menu {
 				System.out.println("Which dictionary would you like to view?");
 				System.out.println("1. English To Spanish");
 				System.out.println("2. Spanish To English");
+				System.out.println("3. English To French");
+				System.out.println("4. French To English");
 				while (!s.hasNextInt())
 				{
 					s.next();
@@ -140,6 +142,14 @@ public class Menu {
 				if (i == 2)
 				{
 					dictionary.displayTreeSpanToEng(dictionary.getRoot());
+				}
+				if (i == 3)
+				{
+					dictionary.displayTreeEngToFre(dictionary.getRoot());
+				}
+				if (i == 4)
+				{
+					dictionary.displayTreeFreToEng(dictionary.getRoot());
 				}
 			}
 			else if (choice == 8) //turn the add a translation setting thingy on or off

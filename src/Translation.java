@@ -149,6 +149,8 @@ public class Translation {
 	{
 		tree.displayTreeEngToSpan(tree.getRoot());
 		tree.displayTreeSpanToEng(tree.getRoot());
+		tree.displayTreeEngToFre(tree.getRoot());
+		tree.displayTreeFreToEng(tree.getRoot());
 	}
 	
 	public void deleteEngToSpan()
