@@ -136,4 +136,13 @@ public class Translation {
 		}
 		return translation;
 	}
+	
+	/**
+	 * calls on the display methods from the tree class
+	 */
+	public void display()
+	{
+		tree.displayTreeEngToSpan(tree.getRoot());
+		tree.displayTreeSpanToEng(tree.getRoot());
+	}
 }

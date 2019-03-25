@@ -1,3 +1,4 @@
+import java.util.Scanner;
 /**
  * 
  */
@@ -8,13 +9,17 @@
  */
 public class Test {
 	
+	Tree test = new Tree();
+	
 	/**
 	 * Method to test creating the alphabet tree
 	 */
 	public void treeTest() 
 	{
-		Tree test = new Tree();
+		// Tree test = new Tree();
 		test.createAlphabetTree();
-		test.displayTree(test.getRoot());
+		test.displayTreeEngToSpan(test.getRoot());
+		test.displayTreeSpanToEng(test.getRoot());
 	}
+	
 }
