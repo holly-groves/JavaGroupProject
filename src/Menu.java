@@ -35,8 +35,9 @@ public class Menu {
 			System.out.println("4. Search for a translation");
 			System.out.println("5. Add a translation");
 			System.out.println("6. Remove a translation");
-			//option 7. is turning the add a translation setting on and off (Jack)
-			System.out.println("8. Run Automated Tests");
+			System.out.println("7. Display dictonaries");
+			//option 8. is turning the add a translation setting on and off (Jack)
+			System.out.println("9. Run Automated Tests");
 			System.out.println("0. Exit");
 			
 			try
@@ -117,11 +118,35 @@ public class Menu {
 			{
 				//Jack
 			}
-			else if (choice == 7) //turn the add a translation setting thingy on or off
+			else if (choice == 7) //display dictionaries
+			{
+				//Michael
+				Tree dictionary = new Tree();
+				dictionary.createAlphabetTree();
+				Scanner s = new Scanner(System.in);
+				System.out.println("Which dictionary would you like to view?");
+				System.out.println("1. English To Spanish");
+				System.out.println("2. Spanish To English");
+				while (!s.hasNextInt())
+				{
+					s.next();
+					System.out.println("Error: number invalid");
+				}
+				int i = s.nextInt();
+				if (i == 1)
+				{
+					dictionary.displayTreeEngToSpan(dictionary.getRoot());
+				}
+				if (i == 2)
+				{
+					dictionary.displayTreeSpanToEng(dictionary.getRoot());
+				}
+			}
+			else if (choice == 8) //turn the add a translation setting thingy on or off
 			{
 				//Jack
 			}
-			else if (choice == 8) //run automated tests
+			else if (choice == 9) //run automated tests
 			{
 				Test test = new Test();
 				System.out.println("Tests:"); //Tests need added (everyone)
