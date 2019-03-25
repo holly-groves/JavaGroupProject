@@ -13,8 +13,10 @@ public class Menu {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Menu menu = new Menu();
-		menu.runMenu();
+		//Menu menu = new Menu();
+		//menu.runMenu();
+		Test test = new Test();
+		test.treeTest();
 	}
 	
 	/**

@@ -1,3 +1,8 @@
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 /**
  * 
  */
@@ -284,37 +289,71 @@ public class Tree {
 	 */
 	public void displayTree(TreeNode root) //METHOD NEEDS FIXED (Michael)
 	{
-//		TreeNode current = root;
-//		boolean complete = false;
-//
-//		while (!complete)
-//		{
-//			if (current == null)
-//			{
-//				complete = true;
-//			}
-//			else
-//			{
-//				TreeNode currentLeft = current.getLeft();
-//				TreeNode currentRight = current.getRight();
-//
-//				if (currentLeft != null)
-//				{
-//					displayTree(currentLeft);
-//				}
-//
-//				int id = current.getLetterId();
-//				String engToSpan = current.getEngToSpanFile();
-//				String spanToEng = current.getSpanToEngFile();
-//				System.out.println("[" + id + "] " + engToSpan + " - " + spanToEng);
-//
-//				if (currentRight != null)
-//				{
-//					displayTree(currentRight);
-//				}
-//
-//				complete = true;
-//			}
-//		}
+		FileReader fileReader1 = null;
+		BufferedReader bufferedReader1 = null;
+		String nextLine1;
+		FileReader fileReader2 = null;
+		BufferedReader bufferedReader2 = null;
+		String nextLine2;
+		
+		TreeNode current = root;
+		boolean complete = false;
+		while (!complete)
+		{
+			if (current == null)
+			{
+				complete = true;
+			}
+			else
+			{
+				TreeNode currentLeft = current.getLeft();
+				TreeNode currentRight = current.getRight();
+
+				if (currentLeft != null)
+				{
+					displayTree(currentLeft);
+				}
+
+				int id = current.getLetterId();
+				String letter = Character.toString((char) id);
+				String fileEngToSpanWords = letter + "engtospanw.txt";
+				String fileEngToSpanTranslations = letter + "engtospant.txt";
+				System.out.println(letter);
+				System.out.println();
+				
+				try
+				{
+					fileReader1 = new FileReader(fileEngToSpanWords);
+					bufferedReader1 = new BufferedReader(fileReader1);
+					nextLine1 = bufferedReader1.readLine();
+					
+					fileReader2 = new FileReader(fileEngToSpanTranslations);
+					bufferedReader2 = new BufferedReader(fileReader2);
+					nextLine2 = bufferedReader2.readLine();
+					
+					while (nextLine1 != null || nextLine2 != null)
+					{
+						System.out.println(nextLine1 + " - " + nextLine2);
+						nextLine1 = bufferedReader1.readLine();
+						nextLine2 = bufferedReader2.readLine();
+					}
+					bufferedReader1.close();
+				}
+				
+				catch (IOException e)
+				{
+					System.out.println("IO Error reading from file: " + e);
+				}				
+
+				System.out.println();
+				
+    			if (currentRight != null)
+				{
+					displayTree(currentRight);
+				}
+
+				complete = true;
+			}
+		}
 	}
 }
