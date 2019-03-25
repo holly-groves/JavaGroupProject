@@ -13,8 +13,22 @@ public class Test {
 	 */
 	public void treeTest() 
 	{
+		System.out.println("TESTS\n");
+		testCreatingTree();
+	}
+	
+	/**
+	 * tests creating the alphabet tree
+	 */
+	public void testCreatingTree()
+	{
 		Tree test = new Tree();
+		System.out.println("Creating the alphabet tree");
 		test.createAlphabetTree();
-		test.displayTree(test.getRoot());
+		System.out.println("\nIn-Order (alphabet)");
+		test.printInOrder(test.getRoot());
+		System.out.println("\nPre-Order (how the letters are put in to balance the tree");
+		test.printPreOrder(test.getRoot());
+		System.out.println("Test complete.");
 	}
 }

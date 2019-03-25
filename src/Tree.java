@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 /**
  * 
  */
@@ -278,15 +282,21 @@ public class Tree {
 		System.out.println(letter);
 	}
 	
-	/**
-	 * Method used to display all the dictionaries
-	 * @param root TreeNode containing the root of the tree
-	 */
-	public void displayTree(TreeNode root) //METHOD NEEDS FIXED (Michael)
-	{
+//	/**
+//	 * Method used to display all the dictionaries
+//	 * @param root TreeNode containing the root of the tree
+//	 */
+//	public void displayTree(TreeNode root)
+//	{
+//		FileReader fileReader1 = null;
+//		BufferedReader bufferedReader1 = null;
+//		String nextLine1;
+//		FileReader fileReader2 = null;
+//		BufferedReader bufferedReader2 = null;
+//		String nextLine2;
+//		
 //		TreeNode current = root;
 //		boolean complete = false;
-//
 //		while (!complete)
 //		{
 //			if (current == null)
@@ -304,11 +314,39 @@ public class Tree {
 //				}
 //
 //				int id = current.getLetterId();
-//				String engToSpan = current.getEngToSpanFile();
-//				String spanToEng = current.getSpanToEngFile();
-//				System.out.println("[" + id + "] " + engToSpan + " - " + spanToEng);
+//				String letter = Character.toString((char) id);
+//				String fileEngToSpanWords = letter + "engtospanw.txt";
+//				String fileEngToSpanTranslations = letter + "engtospant.txt";
+//				System.out.println(letter);
+//				System.out.println();
+//				
+//				try
+//				{
+//					fileReader1 = new FileReader(fileEngToSpanWords);
+//					bufferedReader1 = new BufferedReader(fileReader1);
+//					nextLine1 = bufferedReader1.readLine();
+//					
+//					fileReader2 = new FileReader(fileEngToSpanTranslations);
+//					bufferedReader2 = new BufferedReader(fileReader2);
+//					nextLine2 = bufferedReader2.readLine();
+//					
+//					while (nextLine1 != null || nextLine2 != null)
+//					{
+//						System.out.println(nextLine1 + " - " + nextLine2);
+//						nextLine1 = bufferedReader1.readLine();
+//						nextLine2 = bufferedReader2.readLine();
+//					}
+//					bufferedReader1.close();
+//				}
+//				
+//				catch (IOException e)
+//				{
+//					System.out.println("IO Error reading from file: " + e);
+//				}				
 //
-//				if (currentRight != null)
+//				System.out.println();
+//				
+//    			if (currentRight != null)
 //				{
 //					displayTree(currentRight);
 //				}
@@ -316,5 +354,158 @@ public class Tree {
 //				complete = true;
 //			}
 //		}
+//	}
+	
+	/**
+	 * Method used to display the dictionary for English into Spanish
+	 * @param root TreeNode containing the root of the tree
+	 */
+	public void displayTreeEngToSpan(TreeNode root)
+	{
+		FileReader fileReader1 = null;
+		BufferedReader bufferedReader1 = null;
+		String nextLine1;
+		FileReader fileReader2 = null;
+		BufferedReader bufferedReader2 = null;
+		String nextLine2;
+		
+		TreeNode current = root;
+		boolean complete = false;
+		while (!complete)
+		{
+			if (current == null) // if tree is empty then skip, as there's nothing to display
+			{
+				complete = true;
+			}
+			else
+			{
+				TreeNode currentLeft = current.getLeft();
+				TreeNode currentRight = current.getRight();
+
+				if (currentLeft != null)
+				{
+					displayTreeEngToSpan(currentLeft); // recursive; go left if the current node's left subtree exists
+				}
+
+				int id = current.getLetterId();
+				String letter = Character.toString((char) id);
+				String fileEngToSpanWords = letter + "engtospanw.txt";
+				String fileEngToSpanTranslations = letter + "engtospant.txt";
+				
+				System.out.println(letter + " (English to Spanish)");
+				System.out.println();
+				
+				try
+				{
+					fileReader1 = new FileReader(fileEngToSpanWords); // reads in English words
+					bufferedReader1 = new BufferedReader(fileReader1);
+					nextLine1 = bufferedReader1.readLine();
+					
+					fileReader2 = new FileReader(fileEngToSpanTranslations); // reads in translations to Spanish
+					bufferedReader2 = new BufferedReader(fileReader2);
+					nextLine2 = bufferedReader2.readLine();
+					
+					while (nextLine1 != null || nextLine2 != null)
+					{
+						System.out.println(nextLine1 + " - " + nextLine2); // display the word with its translation
+						nextLine1 = bufferedReader1.readLine();
+						nextLine2 = bufferedReader2.readLine();
+					}
+					bufferedReader1.close();
+					bufferedReader2.close();
+				}
+				
+				catch (IOException e)
+				{
+					System.out.println("IO Error reading from file: " + e);
+				}				
+
+				System.out.println();
+				
+    			if (currentRight != null) 
+				{
+					displayTreeEngToSpan(currentRight); // recursive; go right if current node's right subtree exists
+				}
+
+				complete = true;
+			}
+		}
 	}
+	
+	/**
+	 * Method used to display the dictionary for Spanish into English
+	 * @param root TreeNode containing the root of the tree
+	 */
+	public void displayTreeSpanToEng(TreeNode root)
+	{
+		FileReader fileReader1 = null;
+		BufferedReader bufferedReader1 = null;
+		String nextLine1;
+		FileReader fileReader2 = null;
+		BufferedReader bufferedReader2 = null;
+		String nextLine2;
+		
+		TreeNode current = root;
+		boolean complete = false;
+		while (!complete)
+		{
+			if (current == null) // if tree is empty then skip, as there's nothing to display
+			{
+				complete = true;
+			}
+			else
+			{
+				TreeNode currentLeft = current.getLeft();
+				TreeNode currentRight = current.getRight();
+
+				if (currentLeft != null) // go left if the current node's left subtree exists
+				{
+					displayTreeSpanToEng(currentLeft);
+				}
+
+				int id = current.getLetterId();
+				String letter = Character.toString((char) id);
+				String fileSpanToEngWords = letter + "spantoengw.txt";
+				String fileSpanToEngTranslations = letter + "spantoengt.txt";
+				
+				System.out.println(letter + " (Spanish to English)");
+				System.out.println();
+				
+				try
+				{
+					fileReader1 = new FileReader(fileSpanToEngWords); // reads in Spanish words
+					bufferedReader1 = new BufferedReader(fileReader1);
+					nextLine1 = bufferedReader1.readLine();
+					
+					fileReader2 = new FileReader(fileSpanToEngTranslations); // reads in translations to English
+					bufferedReader2 = new BufferedReader(fileReader2);
+					nextLine2 = bufferedReader2.readLine();
+					
+					while (nextLine1 != null || nextLine2 != null)
+					{
+						System.out.println(nextLine1 + " - " + nextLine2); // display the word with its translation
+						nextLine1 = bufferedReader1.readLine();
+						nextLine2 = bufferedReader2.readLine();
+					}
+					bufferedReader1.close();
+					bufferedReader2.close();
+				}
+				
+				catch (IOException e)
+				{
+					System.out.println("IO Error reading from file: " + e);
+				}				
+
+				System.out.println();
+				
+    			if (currentRight != null) // go right if current node's right subtree exists
+				{
+					displayTreeSpanToEng(currentRight);
+				}
+
+				complete = true;
+			}
+		}
+	}
+
 }
