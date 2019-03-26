@@ -17,8 +17,14 @@ public class Test {
 		testCreatingTree();
 		testDisplayingTreeEngToSpan();
 		testDisplayingTreeSpanToEng();
-		testFileTranslation();
+		testFileTranslationEngToSpan();
 		testAddAndDeleteEngToSpan();
+		testFileTranslationSpanToEng();
+		testAddAndDeleteSpanToEng();
+		testFileTranslationEngToFre();
+		testAddAndDeleteEngToFre();
+		testFileTranslationFreToEng();
+		testAddAndDeleteFreToEng();
 		testTranslateWord();
 
 		
@@ -60,11 +66,38 @@ public class Test {
 	/**
 	 * Automated testing for; translate file, add and delete method.
 	 */
-	public void testFileTranslation()
+	public void testFileTranslationEngToSpan()
 	{
 		Translation translation = new Translation();
 		System.out.println("Translate a file called test from english to spanish and rename it testTranslated.");
 		translation.translateFileEngToSpan(true, "testToTranslate.txt", "testTranslated.txt"); // will need a file called test.txt with a few random words on it.
+		System.out.println("Test complete.");
+		System.out.println();
+	}
+	
+	public void testFileTranslationSpanToEng()
+	{
+		Translation translation = new Translation();
+		System.out.println("Translate a file called test from spanish to english and rename it testTranslated.");
+		translation.translateFileSpanToEng(true, "testToTranslate.txt", "testTranslated.txt"); // will need a file called test.txt with a few random words on it.
+		System.out.println("Test complete.");
+		System.out.println();
+	}
+	
+	public void testFileTranslationEngToFre()
+	{
+		Translation translation = new Translation();
+		System.out.println("Translate a file called test from english to french and rename it testTranslated.");
+		translation.translateFileEngToFre(true, "testToTranslate.txt", "testTranslated.txt"); // will need a file called test.txt with a few random words on it.
+		System.out.println("Test complete.");
+		System.out.println();
+	}
+	
+	public void testFileTranslationFreToEng()
+	{
+		Translation translation = new Translation();
+		System.out.println("Translate a file called test from french to english and rename it testTranslated.");
+		translation.translateFileFreToEng(true, "testToTranslate.txt", "testTranslated.txt"); // will need a file called test.txt with a few random words on it.
 		System.out.println("Test complete.");
 		System.out.println();
 	}
@@ -76,6 +109,39 @@ public class Test {
 		translation.addEngToSpan(true, "myWillToLive", "NonExistent");
 		System.out.println("\nDelete a translation (Delete an english to spanish translation called testWord and the translation testWordTranslated)");
 		translation.deleteEngToSpan(true, "myWillToLive");
+		System.out.println("Test complete.");
+		System.out.println();
+	}
+	
+	public void testAddAndDeleteSpanToEng()
+	{
+		Translation translation = new Translation();
+		System.out.println("\nTest add translation (add an spanish to english translation to the dictionary).");
+		translation.addSpanToEng(true, "myWillToLive", "NonExistent");
+		System.out.println("\nDelete a translation (Delete an english to spanish translation called testWord and the translation testWordTranslated)");
+		translation.deleteSpanToEng(true, "myWillToLive");
+		System.out.println("Test complete.");
+		System.out.println();
+	}
+	
+	public void testAddAndDeleteEngToFre()
+	{
+		Translation translation = new Translation();
+		System.out.println("\nTest add translation (add an english to spanish translation to the dictionary).");
+		translation.addEngToFre(true, "myWillToLive", "NonExistent");
+		System.out.println("\nDelete a translation (Delete an english to french translation called testWord and the translation testWordTranslated)");
+		translation.deleteEngToFre(true, "myWillToLive");
+		System.out.println("Test complete.");
+		System.out.println();
+	}
+	
+	public void testAddAndDeleteFreToEng()
+	{
+		Translation translation = new Translation();
+		System.out.println("\nTest add translation (add an spanish to english translation to the dictionary).");
+		translation.addFreToEng(true, "myWillToLive", "NonExistent");
+		System.out.println("\nDelete a translation (Delete an english to french translation called testWord and the translation testWordTranslated)");
+		translation.deleteFreToEng(true, "myWillToLive");
 		System.out.println("Test complete.");
 		System.out.println();
 	}
