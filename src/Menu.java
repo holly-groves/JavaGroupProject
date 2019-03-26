@@ -98,6 +98,7 @@ public class Menu {
 				System.out.println("4. French to English."); 
 				Scanner s = new Scanner(System.in);
 				int language = s.nextInt();
+				s.close();
 				if (language == 1)
 				{
 					translation.translateFileEngToSpan();
@@ -144,6 +145,7 @@ public class Menu {
 				System.out.println("4. French to English."); 
 				Scanner s = new Scanner(System.in);
 				int language = s.nextInt();
+				s.close();
 				if (language == 1)
 				{
 					translation.addEngToSpan();
@@ -171,6 +173,7 @@ public class Menu {
 				System.out.println("4. French to English."); 
 				Scanner s = new Scanner(System.in);
 				int language = s.nextInt();
+				s.close();
 				if (language == 1)
 				{
 					translation.deleteEngToSpan();

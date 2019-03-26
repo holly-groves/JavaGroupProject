@@ -170,6 +170,7 @@ public class Translation {
 		System.out.println("Please enter the word in Englsh to delete: "); // Enter the English word to delete.
 		Scanner r = new Scanner(System.in);
 		String english = r.nextLine();
+		r.close();
 		
 		String spanish = translateWord(1, english); // get the translation for the word to delete.
 
@@ -229,10 +230,10 @@ public class Translation {
 			bufferedReader.close();
 			printWriter.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 		
@@ -267,8 +268,10 @@ public class Translation {
 			
 		} catch (FileNotFoundException e)
 		{
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 			
@@ -287,10 +290,10 @@ public class Translation {
 			bufferedReader.close();
 			printWriter.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 	}
@@ -303,7 +306,7 @@ public class Translation {
 		System.out.println("Please enter the word in Spanish to delete: ");
 		Scanner r = new Scanner(System.in);
 		String spanish = r.nextLine();
-		
+		r.close();
 		String english = translateWord(2, spanish);
 
 		char[] characters = spanish.toCharArray();
@@ -363,10 +366,10 @@ public class Translation {
 			bufferedReader.close();
 			printWriter.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 			
@@ -398,8 +401,10 @@ public class Translation {
 			
 		} catch (FileNotFoundException e)
 		{
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 			
@@ -419,10 +424,10 @@ public class Translation {
 			bufferedReader.close();
 			printWriter.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 	}
@@ -436,6 +441,7 @@ public class Translation {
 		System.out.println("Please enter the word in Englsh to delete: "); // Enter the English word to delete.
 		Scanner r = new Scanner(System.in);
 		String english = r.nextLine();
+		r.close();
 		
 		String french = translateWord(3, english); // get the translation for the word to delete.
 
@@ -469,8 +475,10 @@ public class Translation {
 			
 		} catch (FileNotFoundException e)
 		{
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 
@@ -495,10 +503,10 @@ public class Translation {
 			bufferedReader.close();
 			printWriter.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 		
@@ -533,8 +541,10 @@ public class Translation {
 			
 		} catch (FileNotFoundException e)
 		{
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 			
@@ -553,10 +563,10 @@ public class Translation {
 			bufferedReader.close();
 			printWriter.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 	}
@@ -569,6 +579,7 @@ public class Translation {
 		System.out.println("Please enter the word in Spanish to delete: ");
 		Scanner r = new Scanner(System.in);
 		String french = r.nextLine();
+		r.close();
 		
 		String english = translateWord(4, french);
 
@@ -629,10 +640,10 @@ public class Translation {
 			bufferedReader.close();
 			printWriter.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 			
@@ -685,10 +696,10 @@ public class Translation {
 			bufferedReader.close();
 			printWriter.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 	} 
@@ -699,15 +710,14 @@ public class Translation {
 	 */
 	public void addEngToSpan() 
 	{
-		FileOutputStream outputStream;
-		PrintWriter printWriter;
-		
 		System.out.println("Please enter the word in Englsh to add: "); //Enter the English word.
 		Scanner r = new Scanner(System.in);
 		String english = r.nextLine();
+		r.close();
 		System.out.println("Please enter the word in Spanish to add: "); // Enter the Spanish translation for that word.
 		Scanner s = new Scanner(System.in);
 		String spanish = s.nextLine();
+		s.close();
 		
 		char[] characters = english.toCharArray(); // Get the first letter of the inputted word.
 		char firstChar = characters[0];
@@ -718,18 +728,22 @@ public class Translation {
 			BufferedWriter b = new BufferedWriter(f);
 			PrintWriter p = new PrintWriter(b);
 			p.println(english);
+			p.close();
 			
 			FileWriter g = new FileWriter(firstChar + "engtospant.txt", true); // Adds the translation to the translation file.
 			BufferedWriter c = new BufferedWriter(g);
 			PrintWriter q = new PrintWriter(c);
 			q.println(spanish);
+			q.close();
 		} catch (FileNotFoundException e) 
 		{
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
+		
 	}
 	
 	/**
@@ -738,15 +752,14 @@ public class Translation {
 	 */
 	public void addSpanToEng() 
 	{
-		FileOutputStream outputStream;
-		PrintWriter printWriter;
-		
 		System.out.println("Please enter the word in Spanish to add: ");
 		Scanner r = new Scanner(System.in);
 		String spanish = r.nextLine();
+		r.close();
 		System.out.println("Please enter the word in English to add: ");
 		Scanner s = new Scanner(System.in);
-		String english = r.nextLine();
+		String english = s.nextLine();
+		s.close();
 		
 		char[] characters = spanish.toCharArray();
 		char firstChar = characters[0];
@@ -757,16 +770,19 @@ public class Translation {
 			BufferedWriter b = new BufferedWriter(f);
 			PrintWriter p = new PrintWriter(b);
 			p.println(spanish);
+			p.close();
 			
 			FileWriter g = new FileWriter(firstChar + "spantoengt.txt", true);
 			BufferedWriter c = new BufferedWriter(g);
 			PrintWriter q = new PrintWriter(c);
-			p.println(english);
+			q.println(english);
+			q.close();
 		} catch (FileNotFoundException e) 
 		{
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 	}
@@ -777,15 +793,15 @@ public class Translation {
 	 */
 	public void addEngToFre() 
 	{
-		FileOutputStream outputStream;
-		PrintWriter printWriter;
-		
 		System.out.println("Please enter the word in Englsh to add: "); //Enter the English word.
 		Scanner r = new Scanner(System.in);
 		String english = r.nextLine();
+		r.close();
+		
 		System.out.println("Please enter the word in French to add: "); // Enter the French translation for that word.
 		Scanner s = new Scanner(System.in);
 		String french = s.nextLine();
+		s.close();
 		
 		char[] characters = english.toCharArray(); // Get the first letter of the inputed word.
 		char firstChar = characters[0];
@@ -796,16 +812,19 @@ public class Translation {
 			BufferedWriter b = new BufferedWriter(f);
 			PrintWriter p = new PrintWriter(b);
 			p.println(english);
+			p.close();
 			
 			FileWriter g = new FileWriter(firstChar + "engtofret.txt", true); // Adds the translation to the translation file.
 			BufferedWriter c = new BufferedWriter(g);
 			PrintWriter q = new PrintWriter(c);
 			q.println(french);
+			q.close();
 		} catch (FileNotFoundException e) 
 		{
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 	}
@@ -816,15 +835,15 @@ public class Translation {
 	 */
 	public void addFreToEng() 
 	{
-		FileOutputStream outputStream;
-		PrintWriter printWriter;
-		
 		System.out.println("Please enter the word in French to add: ");
 		Scanner r = new Scanner(System.in);
 		String french = r.nextLine();
+		r.close();
+		
 		System.out.println("Please enter the word in English to add: ");
 		Scanner s = new Scanner(System.in);
-		String english = r.nextLine();
+		String english = s.nextLine();
+		s.close();
 		
 		char[] characters = french.toCharArray();
 		char firstChar = characters[0];
@@ -835,16 +854,19 @@ public class Translation {
 			BufferedWriter b = new BufferedWriter(f);
 			PrintWriter p = new PrintWriter(b);
 			p.println(french);
+			p.close();
 			
 			FileWriter g = new FileWriter(firstChar + "fretoengt.txt", true);
 			BufferedWriter c = new BufferedWriter(g);
 			PrintWriter q = new PrintWriter(c);
-			p.println(english);
+			q.println(english);
+			q.close();
 		} catch (FileNotFoundException e) 
 		{
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 	}
@@ -869,6 +891,7 @@ public class Translation {
 		System.out.println("Please enter the name you would like the translated file to have: "); // Enter the name of the new translated file.
 		Scanner r = new Scanner(System.in);
 		String translatedFile = s.nextLine();
+		r.close();
 		
 		try 
 		{
@@ -892,10 +915,10 @@ public class Translation {
 			bufferedReader.close();
 			printWriter.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 	}
@@ -918,6 +941,7 @@ public class Translation {
 		System.out.println("Please enter the name you would like the translated file to have: ");
 		Scanner r = new Scanner(System.in);
 		String translatedFile = s.nextLine();
+		r.close();
 		
 		try 
 		{
@@ -941,10 +965,10 @@ public class Translation {
 			bufferedReader.close();
 			printWriter.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 	}
@@ -969,6 +993,7 @@ public class Translation {
 		System.out.println("Please enter the name you would like the translated file to have: "); // Enter the name of the new translated file.
 		Scanner r = new Scanner(System.in);
 		String translatedFile = s.nextLine();
+		r.close();
 		
 		try 
 		{
@@ -992,10 +1017,10 @@ public class Translation {
 			bufferedReader.close();
 			printWriter.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 	}
@@ -1018,6 +1043,7 @@ public class Translation {
 		System.out.println("Please enter the name you would like the translated file to have: ");
 		Scanner r = new Scanner(System.in);
 		String translatedFile = s.nextLine();
+		r.close();
 		
 		try 
 		{
@@ -1041,10 +1067,10 @@ public class Translation {
 			bufferedReader.close();
 			printWriter.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 	}
@@ -1055,12 +1081,11 @@ public class Translation {
 	 */
 	public void autoAddEngToSpan(String english) 
 	{
-		FileOutputStream outputStream;
-		PrintWriter printWriter;
 		System.out.println("The word you would like to enter a translation for is: " + english);
 		System.out.println("Please enter the spanish translation for the word: "); // Enter the Spanish translation for that word.
 		Scanner s = new Scanner(System.in);
 		String spanish = s.nextLine();
+		s.close();
 		
 		char[] characters = english.toCharArray(); // Get the first letter of the inputed word.
 		char firstChar = characters[0];
@@ -1071,16 +1096,19 @@ public class Translation {
 			BufferedWriter b = new BufferedWriter(f);
 			PrintWriter p = new PrintWriter(b);
 			p.println(english);
+			p.close();
 			
 			FileWriter g = new FileWriter(firstChar + "engtospant.txt", true); // Adds the translation to the translation file.
 			BufferedWriter c = new BufferedWriter(g);
 			PrintWriter q = new PrintWriter(c);
 			q.println(spanish);
+			q.close();
 		} catch (FileNotFoundException e) 
 		{
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 	}
@@ -1091,12 +1119,11 @@ public class Translation {
 	 */
 	public void autoAddSpanToEng(String spanish) 
 	{
-		FileOutputStream outputStream;
-		PrintWriter printWriter;
 		System.out.println("The word you would like to enter a translation for is: " + spanish);
 		System.out.println("Please enter the english translation for the word: "); // Enter the english translation for that word.
 		Scanner s = new Scanner(System.in);
 		String english = s.nextLine();
+		s.close();
 		
 		char[] characters = spanish.toCharArray(); // Get the first letter of the inputed word.
 		char firstChar = characters[0];
@@ -1107,16 +1134,19 @@ public class Translation {
 			BufferedWriter b = new BufferedWriter(f);
 			PrintWriter p = new PrintWriter(b);
 			p.println(spanish);
+			p.close();
 			
 			FileWriter g = new FileWriter(firstChar + "spantoengt.txt", true); // Adds the translation to the translation file.
 			BufferedWriter c = new BufferedWriter(g);
 			PrintWriter q = new PrintWriter(c);
-			q.println(spanish);
+			q.println(english);
+			q.close();
 		} catch (FileNotFoundException e) 
 		{
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 	}
@@ -1127,12 +1157,11 @@ public class Translation {
 	 */
 	public void autoAddEngToFre(String english) 
 	{
-		FileOutputStream outputStream;
-		PrintWriter printWriter;
 		System.out.println("The word you would like to enter a translation for is: " + english);
 		System.out.println("Please enter the French translation for the word: "); // Enter the French translation for that word.
 		Scanner s = new Scanner(System.in);
 		String french = s.nextLine();
+		s.close();
 		
 		char[] characters = english.toCharArray(); // Get the first letter of the inputed word.
 		char firstChar = characters[0];
@@ -1143,16 +1172,19 @@ public class Translation {
 			BufferedWriter b = new BufferedWriter(f);
 			PrintWriter p = new PrintWriter(b);
 			p.println(english);
+			p.close();
 			
 			FileWriter g = new FileWriter(firstChar + "engtofret.txt", true); // Adds the translation to the translation file.
 			BufferedWriter c = new BufferedWriter(g);
 			PrintWriter q = new PrintWriter(c);
 			q.println(french);
+			q.close();
 		} catch (FileNotFoundException e) 
 		{
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 	}
@@ -1163,12 +1195,11 @@ public class Translation {
 	 */
 	public void autoAddFreToEng(String french) 
 	{
-		FileOutputStream outputStream;
-		PrintWriter printWriter;
 		System.out.println("The word you would like to enter a translation for is: " + french);
 		System.out.println("Please enter the english translation for the word: "); // Enter the English translation for that word.
 		Scanner s = new Scanner(System.in);
 		String english = s.nextLine();
+		s.close();
 		
 		char[] characters = french.toCharArray(); // Get the first letter of the inputed word.
 		char firstChar = characters[0];
@@ -1179,16 +1210,19 @@ public class Translation {
 			BufferedWriter b = new BufferedWriter(f);
 			PrintWriter p = new PrintWriter(b);
 			p.println(french);
+			p.close();
 			
 			FileWriter g = new FileWriter(firstChar + "fretoengt.txt", true); // Adds the translation to the translation file.
 			BufferedWriter c = new BufferedWriter(g);
 			PrintWriter q = new PrintWriter(c);
-			q.println(french);
+			q.println(english);
+			q.close();
 		} catch (FileNotFoundException e) 
 		{
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 	}
@@ -1227,10 +1261,10 @@ public class Translation {
 			bufferedReader.close();
 			printWriter.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 	}
@@ -1297,10 +1331,10 @@ public class Translation {
 			bufferedReader.close();
 			printWriter.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 		
@@ -1355,19 +1389,16 @@ public class Translation {
 			bufferedReader.close();
 			printWriter.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 	}
 	
 	public void testAddEngToSpan() 
 	{
-		FileOutputStream outputStream;
-		PrintWriter printWriter;
-
 		String english = "test";
 		String spanish = "testTranslated";
 		
@@ -1380,16 +1411,19 @@ public class Translation {
 			BufferedWriter b = new BufferedWriter(f);
 			PrintWriter p = new PrintWriter(b);
 			p.println(english);
+			p.close();
 			
 			FileWriter g = new FileWriter(firstChar + "engtospant.txt", true); // Adds the translation to the translation file.
 			BufferedWriter c = new BufferedWriter(g);
 			PrintWriter q = new PrintWriter(c);
 			q.println(spanish);
+			q.close();
 		} catch (FileNotFoundException e) 
 		{
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 	}

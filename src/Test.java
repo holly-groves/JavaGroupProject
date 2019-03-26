@@ -38,8 +38,12 @@ public class Test {
 	public void testTranslation()
 	{
 		Translation translation = new Translation();
-		translation.testTranslateFileEngToSpan();
+		System.out.println("Translate a file called test from english to spanish and rename it testTranslated.");
+		translation.testTranslateFileEngToSpan(); // will need a file called test.txt with a few random words on it.
+		System.out.println("\nTest add translation (add an english to spanish translation to the dictionary).");
 		translation.testAddEngToSpan();
+		System.out.println("\nDelete a translation (Delete an english to spanish translation called testWord and the translation testWordTranslated)");
 		translation.testDeleteEngToSpan();
+		System.out.println("Test complete.");
 	}
 }
