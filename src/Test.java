@@ -14,14 +14,14 @@ public class Test {
 	public void treeTest() 
 	{
 		System.out.println("TESTS\n");
-		testCreatingTree();
-		testDisplayingTreeEngToSpan();
-		testDisplayingTreeSpanToEng();
-		testTranslation();
-		testTranslateWord();
-		testTranslatePhraseEngToSpan();
-		testTranslatePhraseSpanToEng();
-		testTranslatePhraseEngToFre();
+		//testCreatingTree();
+		//testDisplayingTreeEngToSpan();
+		//testDisplayingTreeSpanToEng();
+		//testTranslation();
+		//testTranslateWord();
+		//testTranslatePhraseEngToSpan();
+		//testTranslatePhraseSpanToEng();
+		//testTranslatePhraseEngToFre();
 		testTranslatePhraseFreToEng();
 	}
 	
@@ -147,7 +147,7 @@ public class Test {
 		Tree tree = new Tree();
 		tree.createAlphabetTree();
 		System.out.println("Translate");
-		phrase = "tourner à droite et aller tout droit";
+		phrase = "tourner a droite et arreter";
 		tran = test.translatePhrase(4, phrase);
 		System.out.println("Translation: " + tran);
 	}
