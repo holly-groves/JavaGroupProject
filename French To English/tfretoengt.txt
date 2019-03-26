@@ -25,6 +25,7 @@ temper
 temple
 tempo
 shoot
+turn
 very
 three
 holes

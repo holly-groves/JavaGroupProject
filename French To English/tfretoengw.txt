@@ -25,6 +25,7 @@ tempérer
 temple
 tempo
 tirer
+tourner
 tres
 trois
 troué

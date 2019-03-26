@@ -1,3 +1,4 @@
+a
 une auto
 un annuaire
 un arrondissement
@@ -177,6 +178,7 @@ avoir
 à droite
 actualité
 attention
+arreter
 arroser
 alourdir
 avec elle
