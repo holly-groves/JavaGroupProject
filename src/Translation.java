@@ -52,6 +52,44 @@ public class Translation {
 	}
 	
 	/**
+	 * method to translate a phrase
+	 * 1 for english to spanish
+	 * 2 for spanish to english
+	 * 3 for english to french
+	 * 4 for french to english
+	 * @param lang int containing which language to translate to/from (see above)
+	 * @param translate String containing the phrase to be translated
+	 * @return String containing the translation
+	 */
+	public String translatePhrase(int lang, String translate)
+	{
+		Tree tree = new Tree();
+		tree.createAlphabetTree();
+		String translation = "";
+		TreeNode letterNode = null;
+		String[] splitWords = translate.split("\\s+"); //takes each word in the phrase and splits them apart
+		String[] tSplitWords = new String [splitWords.length];
+		for (int i = 0; i < splitWords.length; i++) //for every word in the phrase
+		{
+			splitWords[i] = splitWords[i].replaceAll("[^\\w]", ""); 
+			if (splitWords[i] != null)
+			{
+				char letter = splitWords[i].charAt(0); //gets the first letter in the word
+				int  ascii = (int) letter; //gets the ascii value of the first letter
+				letterNode = tree.findNode(ascii); //finds the tree node containing the required letter
+			}
+			tSplitWords[i] = searchWord(lang, letterNode.getLetterId(), splitWords[i]);
+			if (tSplitWords[i] == null)
+			{
+				tSplitWords[i] = splitWords[i];
+			}
+		        translation = tSplitWords[i] + " ";
+		}
+		
+		return translation;
+	}
+	
+	/**
 	 * searchs for a word and if it is found, gets it's translation
 	 * 1 for english to spanish
 	 * 2 for spanish to english

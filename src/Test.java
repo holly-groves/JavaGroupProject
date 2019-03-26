@@ -105,21 +105,8 @@ public class Test {
 		Tree tree = new Tree();
 		tree.createAlphabetTree();
 		System.out.println("Translate");
-		phrase = "How are you";
-		tran = test.translateWord(1, phrase);
-		if (tran == null)
-		{
-			tran = "";
-			String[] splitWords = phrase.split("\\s+");
-			for (int i = 0; i < splitWords.length; i++)
-			{
-				splitWords[i] = splitWords[i].replaceAll("[^\\w]", "");
-			}
-			for (int i = 0; i < splitWords.length; i++)
-			{
-				tran = test.translateWord(1, splitWords[i]) + " ";
-			}
-		}
+		phrase = "I want cake";
+		tran = test.translatePhrase(1, phrase);
 		System.out.println("Translation: " + tran);
 	}
 }

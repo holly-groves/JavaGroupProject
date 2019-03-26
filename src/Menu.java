@@ -102,111 +102,35 @@ public class Menu {
 				
 				if (langChoice == 1) // English to Spanish
 				{
-					translatePhrase = tran.translateWord(1, phrase);
-					if (translatePhrase == null)
-					{
-						translatePhrase = "";
-						String[] splitWords = phrase.split("\\s+");
-						for (int i = 0; i < splitWords.length; i++)
-						{
-							splitWords[i] = splitWords[i].replaceAll("[^\\w]", "");
-						}
-						for (int i = 0; i < splitWords.length; i++)
-						{
-							translatePhrase = tran.translateWord(1, splitWords[i]) + " ";
-						}
-						if (translatePhrase != null)
-						{
-							System.out.println(phrase + " - " + translatePhrase);
-						}
-					}
-					else
-					{
-						System.out.println(phrase + " - " + translatePhrase);
-					}
+					translatePhrase = tran.translatePhrase(1, phrase);						
 				}
 				
 				else if (langChoice == 2) // Spanish to English
 				{
-					translatePhrase = tran.translateWord(2, phrase);
-					if (translatePhrase == null)
-					{
-						translatePhrase = "";
-						String[] splitWords = phrase.split("\\s+");
-						for (int i = 0; i < splitWords.length; i++)
-						{
-							splitWords[i] = splitWords[i].replaceAll("[^\\w]", "");
-						}
-						for (int i = 0; i < splitWords.length; i++)
-						{
-							translatePhrase = tran.translateWord(2, splitWords[i]) + " ";
-						}
-						if (translatePhrase != null)
-						{
-							System.out.println(phrase + " - " + translatePhrase);
-						}
-					}
-					else
-					{
-						System.out.println(phrase + " - " + translatePhrase);
-					}
+					translatePhrase = tran.translatePhrase(2, phrase);						
 				}
 				
 				else if (langChoice == 3) // English to French
 				{
-					translatePhrase = tran.translateWord(3, phrase);
-					if (translatePhrase == null)
-					{
-						translatePhrase = "";
-						String[] splitWords = phrase.split("\\s+");
-						for (int i = 0; i < splitWords.length; i++)
-						{
-							splitWords[i] = splitWords[i].replaceAll("[^\\w]", "");
-						}
-						for (int i = 0; i < splitWords.length; i++)
-						{
-							translatePhrase = tran.translateWord(3, splitWords[i]) + " ";
-						}
-						if (translatePhrase != null)
-						{
-							System.out.println(phrase + " - " + translatePhrase);
-						}
-					}
-					else
-					{
-						System.out.println(phrase + " - " + translatePhrase);
-					}
+					translatePhrase = tran.translatePhrase(3, phrase);						
 				}
 				
 				else if (langChoice == 4) // French to English
 				{
-					translatePhrase = tran.translateWord(4, phrase);
-					if (translatePhrase == null)
-					{
-						translatePhrase = "";
-						String[] splitWords = phrase.split("\\s+");
-						for (int i = 0; i < splitWords.length; i++)
-						{
-							splitWords[i] = splitWords[i].replaceAll("[^\\w]", "");
-						}
-						for (int i = 0; i < splitWords.length; i++)
-						{
-							translatePhrase = tran.translateWord(4, splitWords[i]) + " ";
-						}
-						if (translatePhrase != null)
-						{
-							System.out.println(phrase + " - " + translatePhrase);
-						}
-					}
-					else
-					{
-						System.out.println(phrase + " - " + translatePhrase);
-					}
+					translatePhrase = tran.translatePhrase(4, phrase);						
 				}
 				else //invalid
 				{
 					System.out.println("Invalid choice, enter again");
 					runMenu();
+				}
+				if (translatePhrase != null)
+				{
+					System.out.println(phrase + " - " + translatePhrase);
+				}
+				else
+				{
+					System.out.println("No translation found.");
 				}
 				
 			}
