@@ -9,7 +9,7 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 /**
- * 
+ * TRANSLATION
  */
 
 /**
@@ -33,8 +33,9 @@ public class Translation {
 	 */
 	public String translateWord(int lang, String translate)
 	{
-		TreeNode letterNode = null;
+		Tree tree = new Tree();
 		tree.createAlphabetTree();
+		TreeNode letterNode = null;
 		if (translate != null)
 		{
 			char letter = translate.charAt(0); //gets the first letter in the word
@@ -43,6 +44,10 @@ public class Translation {
 		}
 		
 		String translation = searchWord(lang, letterNode.getLetterId(), translate);
+		if (translation == null)
+		{
+			translation = translate;
+		}
 		return translation;
 	}
 	
@@ -59,6 +64,8 @@ public class Translation {
 	 */
 	public String searchWord(int lang, int ascii, String word)
 	{
+		Tree tree = new Tree();
+		tree.createAlphabetTree();
 		String translation = "";
 		String wordFile = "";
 		String translationFile = "";
@@ -69,26 +76,24 @@ public class Translation {
 			wordFile = letter + "engtospanw.txt";
 			translationFile = letter + "engtospant.txt";
 		}
-		else if (lang == 2) // for a spanish to english translation
+		else if (lang == 2) //for a spanish to english translation
 		{
 			String letter = Character.toString((char) ascii);
 			wordFile = letter + "spantoengw.txt";
 			translationFile = letter + "spantoengt.txt";
 		}
-		else if (lang == 3) // for an english to french translation
+		else if (lang == 3) //for an english to french translation
 		{
 			String letter = Character.toString((char) ascii);
 			wordFile = letter + "engtofrew.txt";
 			translationFile = letter + "engtofret.txt";
 		}
-		
-		else if (lang == 4) // for a french to english translation
+		else if (lang == 4) //for a french to english translation
 		{
 			String letter = Character.toString((char) ascii);
 			wordFile = letter + "fretoengw.txt";
 			translationFile = letter + "fretoengt.txt";
 		}
-		
 		try
 		{
 			FileReader filereader = new FileReader(wordFile);
@@ -96,18 +101,21 @@ public class Translation {
 			
 			String fileLine = bufferedReader.readLine();
 			int lineCount = 1;
-			while (fileLine != null)
+			boolean found = false;
+			do
 			{
-				if (fileLine == word) //the word has been found
+				if (fileLine.equals(word)) //the word has been found
 				{
+					found = true;
 					translation = getTranslation(lineCount, translationFile);
+					
 				}
 				else
 				{
 					lineCount++;
 					fileLine = bufferedReader.readLine();
 				}
-			}
+			}while(!found);
 			bufferedReader.close();
 		}
 		catch (IOException e)
@@ -126,6 +134,8 @@ public class Translation {
 	 */
 	public String getTranslation(int line, String file)
 	{
+		Tree tree = new Tree();
+		tree.createAlphabetTree();
 		String translation = "";
 		int count = 1;
 		try
@@ -171,11 +181,16 @@ public class Translation {
 		tree.displayTreeFreToEng(tree.getRoot());
 	}
 	
+	/**
+	 * Allows the user to delete an English word and its translation from the dictionary.
+	 * The user enters the word and the word is than translated, both the word and its translations are then found and deleted.
+	 */
 	public void deleteEngToSpan()
 	{
 		System.out.println("Please enter the word in Englsh to delete: "); // Enter the English word to delete.
 		Scanner r = new Scanner(System.in);
 		String english = r.nextLine();
+		r.close();
 		
 		String spanish = translateWord(1, english); // get the translation for the word to delete.
 
@@ -235,10 +250,10 @@ public class Translation {
 			bufferedReader.close();
 			printWriter.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 		
@@ -273,8 +288,10 @@ public class Translation {
 			
 		} catch (FileNotFoundException e)
 		{
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 			
@@ -293,23 +310,23 @@ public class Translation {
 			bufferedReader.close();
 			printWriter.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 	}
 
 	/**
-	 * The same as the previous method just done the opposite way around so the Spanish word is entered and the Spanish translation is deleted.
+	 * This is the same as the previous method except it requests the Spanish word to delete.
 	 */
 	public void deleteSpanToEng()
 	{
 		System.out.println("Please enter the word in Spanish to delete: ");
 		Scanner r = new Scanner(System.in);
 		String spanish = r.nextLine();
-		
+		r.close();
 		String english = translateWord(2, spanish);
 
 		char[] characters = spanish.toCharArray();
@@ -369,10 +386,10 @@ public class Translation {
 			bufferedReader.close();
 			printWriter.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 			
@@ -404,8 +421,10 @@ public class Translation {
 			
 		} catch (FileNotFoundException e)
 		{
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 			
@@ -425,25 +444,300 @@ public class Translation {
 			bufferedReader.close();
 			printWriter.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Allows the user to delete an English word and its translation from the dictionary.
+	 * The user enters the word and the word is than translated, both the word and its translations are then found and deleted.
+	 */
+	public void deleteEngToFre()
+	{
+		System.out.println("Please enter the word in Englsh to delete: "); // Enter the English word to delete.
+		Scanner r = new Scanner(System.in);
+		String english = r.nextLine();
+		r.close();
+		
+		String french = translateWord(3, english); // get the translation for the word to delete.
+
+		char[] characters = english.toCharArray(); // Get the first letter of the word.
+		char firstChar = characters[0];
+		try
+		{
+			PrintWriter pw = new PrintWriter(firstChar + "engtofrenwnew.txt"); //Create an output for the updated translation file.
+			BufferedReader br1 = new BufferedReader(new FileReader(firstChar + "engtofrew.txt")); //input the translation file as it currently is.
+			String line1 = br1.readLine();
+			while(line1 != null) //whilst the document isn't blank.
+			{
+				boolean flag = false;
+			
+				while(english != null) // while the English word isn't blank.
+				{
+					if(line1.contentEquals(english)) // If the current English word that is being processed isn't the one to be deleted print it, if it is then don't print (delete it).
+					{
+						flag = true;
+						break;
+					}
+				}
+				if(!flag)
+					pw.println(line1);
+				
+				line1 = br1.readLine();
+			}
+			pw.flush(); // Close tools.
+			br1.close();
+			pw.close();
+			
+		} catch (FileNotFoundException e)
+		{
+			System.out.println("Error, file not found: " + e);
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Error reading from files: " + e);
+			e.printStackTrace();
+		}
+
+		FileReader fileReader;
+		BufferedReader bufferedReader;
+		String nextLine;
+		FileOutputStream outputStream;
+		PrintWriter printWriter;
+			
+		try {
+			fileReader = new FileReader("engtofrewnew"); //Read in new file.
+			bufferedReader = new BufferedReader(fileReader);
+			outputStream = new FileOutputStream("engtofrew"); // Output the new file under the name of the original.
+			printWriter = new PrintWriter(outputStream);
+			
+			nextLine = bufferedReader.readLine(); // Read in the first line.
+			while (nextLine != null) // Do whilst the document is not blank
+			{
+				printWriter.println(nextLine); // Print the line to the updated original file.
+				nextLine = bufferedReader.readLine(); // Read in the next line.
+			}
+			bufferedReader.close();
+			printWriter.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("Error, file not found: " + e);
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Error reading from files: " + e);
+			e.printStackTrace();
+		}
+		
+		/**
+		 * Runs the same thing again but using the translation instead so both are erased.
+		 */
+		try
+		{
+			PrintWriter pw = new PrintWriter(firstChar + "engtofretnew.txt"); //Create an output for the updated translation file.
+			BufferedReader br1 = new BufferedReader(new FileReader(firstChar + "engtofret.txt")); //input the translation file as it currently is.
+			String line1 = br1.readLine();
+			while(line1 != null) //whilst the document isn't blank.
+			{
+				boolean flag = false;
+			
+				while(french != null)  // while the French word isn't blank.
+				{
+					if(line1.contentEquals(french)) // If the current Spanish word that is being processed isn't the one to be deleted print it, if it is then don't print (delete it).
+					{
+						flag = true;
+						break;
+					}
+				}
+				if(!flag)
+					pw.println(line1);
+				
+				line1 = br1.readLine();
+			}
+			pw.flush();// Close tools.
+			br1.close();
+			pw.close();
+			
+		} catch (FileNotFoundException e)
+		{
+			System.out.println("Error, file not found: " + e);
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Error reading from files: " + e);
+			e.printStackTrace();
+		}
+			
+		try {
+			fileReader = new FileReader("engtofretnew");//Read in new file.
+			bufferedReader = new BufferedReader(fileReader);
+			outputStream = new FileOutputStream("engtofret");// Output the new file under the name of the original.
+			printWriter = new PrintWriter(outputStream);
+			
+			nextLine = bufferedReader.readLine();// Read in the first line.
+			while (nextLine != null)// Do whilst the document is not blank
+			{
+				printWriter.println(nextLine); // Print the line to the updated original file.
+				nextLine = bufferedReader.readLine();// Read in the next line.
+			}
+			bufferedReader.close();
+			printWriter.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("Error, file not found: " + e);
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 	}
 
-	public void addEngToSpan() 
+	/**
+	 * This is the same as the previous method except it requests the French word to delete.
+	 */
+	public void deleteFreToEng()
 	{
+		System.out.println("Please enter the word in Spanish to delete: ");
+		Scanner r = new Scanner(System.in);
+		String french = r.nextLine();
+		r.close();
+		
+		String english = translateWord(4, french);
+
+		char[] characters = french.toCharArray();
+		char firstChar = characters[0];
+		try
+		{
+			PrintWriter pw = new PrintWriter(firstChar + "fretoengwnew.txt");
+			BufferedReader br1 = new BufferedReader(new FileReader(firstChar + "fretoengw.txt"));
+			String line1 = br1.readLine();
+			while(line1 != null)
+			{
+				boolean flag = false;
+			
+				while(french != null)
+				{
+					if(line1.contentEquals(french))
+					{
+						flag = true;
+						break;
+					}
+				}
+				if(!flag)
+					pw.println(line1);
+				
+				line1 = br1.readLine();
+			}
+			pw.flush();
+			br1.close();
+			pw.close();
+			
+		} catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		FileReader fileReader;
+		BufferedReader bufferedReader;
+		String nextLine;
 		FileOutputStream outputStream;
 		PrintWriter printWriter;
-		
+			
+		try {
+			fileReader = new FileReader("fretoengwnew");
+			bufferedReader = new BufferedReader(fileReader);
+			outputStream = new FileOutputStream("fretoengw");
+			printWriter = new PrintWriter(outputStream);
+			
+			nextLine = bufferedReader.readLine();
+			while (nextLine != null)
+			{
+				System.out.println(nextLine);
+				printWriter.println(nextLine);
+				nextLine = bufferedReader.readLine();
+			}
+			bufferedReader.close();
+			printWriter.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("Error, file not found: " + e);
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Error reading from files: " + e);
+			e.printStackTrace();
+		}
+			
+		try
+		{
+			PrintWriter pw = new PrintWriter(firstChar + "fretoengtnew.txt");
+			BufferedReader br1 = new BufferedReader(new FileReader(firstChar + "fretoengt.txt"));
+			String line1 = br1.readLine();
+			while(line1 != null)
+			{
+				boolean flag = false;
+			
+				while(english != null)
+				{
+					if(line1.contentEquals(english))
+					{
+						flag = true;
+						break;
+					}
+				}
+				if(!flag)
+					pw.println(line1);
+				
+				line1 = br1.readLine();
+			}
+			pw.flush();
+			br1.close();
+			pw.close();
+			
+		} catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+			
+		try {
+			fileReader = new FileReader("fretoengtnew");
+			bufferedReader = new BufferedReader(fileReader);
+			outputStream = new FileOutputStream("fretoengt");
+			printWriter = new PrintWriter(outputStream);
+			
+			nextLine = bufferedReader.readLine();
+			while (nextLine != null)
+			{
+				System.out.println(nextLine);
+				printWriter.println(nextLine);
+				nextLine = bufferedReader.readLine();
+			}
+			bufferedReader.close();
+			printWriter.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("Error, file not found: " + e);
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Error reading from files: " + e);
+			e.printStackTrace();
+		}
+	} 
+	
+	/**
+	 * Adds an English word and its translation to the dictionary.
+	 * Requests both the word and its translation and adds them to the file without writing over them.
+	 */
+	public void addEngToSpan() 
+	{
 		System.out.println("Please enter the word in Englsh to add: "); //Enter the English word.
 		Scanner r = new Scanner(System.in);
 		String english = r.nextLine();
+		r.close();
 		System.out.println("Please enter the word in Spanish to add: "); // Enter the Spanish translation for that word.
 		Scanner s = new Scanner(System.in);
 		String spanish = s.nextLine();
+		s.close();
 		
 		char[] characters = english.toCharArray(); // Get the first letter of the inputted word.
 		char firstChar = characters[0];
@@ -454,18 +748,22 @@ public class Translation {
 			BufferedWriter b = new BufferedWriter(f);
 			PrintWriter p = new PrintWriter(b);
 			p.println(english);
+			p.close();
 			
 			FileWriter g = new FileWriter(firstChar + "engtospant.txt", true); // Adds the translation to the translation file.
 			BufferedWriter c = new BufferedWriter(g);
 			PrintWriter q = new PrintWriter(c);
 			q.println(spanish);
+			q.close();
 		} catch (FileNotFoundException e) 
 		{
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
+		
 	}
 	
 	/**
@@ -474,15 +772,14 @@ public class Translation {
 	 */
 	public void addSpanToEng() 
 	{
-		FileOutputStream outputStream;
-		PrintWriter printWriter;
-		
 		System.out.println("Please enter the word in Spanish to add: ");
 		Scanner r = new Scanner(System.in);
 		String spanish = r.nextLine();
+		r.close();
 		System.out.println("Please enter the word in English to add: ");
 		Scanner s = new Scanner(System.in);
-		String english = r.nextLine();
+		String english = s.nextLine();
+		s.close();
 		
 		char[] characters = spanish.toCharArray();
 		char firstChar = characters[0];
@@ -493,22 +790,111 @@ public class Translation {
 			BufferedWriter b = new BufferedWriter(f);
 			PrintWriter p = new PrintWriter(b);
 			p.println(spanish);
+			p.close();
 			
 			FileWriter g = new FileWriter(firstChar + "spantoengt.txt", true);
 			BufferedWriter c = new BufferedWriter(g);
 			PrintWriter q = new PrintWriter(c);
-			p.println(english);
+			q.println(english);
+			q.close();
 		} catch (FileNotFoundException e) 
 		{
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 	}
 	
 	/**
-	 * This is a modified version of the decryption method used last semester.
+	 * Adds an English word and its translation to the dictionary.
+	 * Requests both the word and its translation and adds them to the file without writing over them.
+	 */
+	public void addEngToFre() 
+	{
+		System.out.println("Please enter the word in Englsh to add: "); //Enter the English word.
+		Scanner r = new Scanner(System.in);
+		String english = r.nextLine();
+		r.close();
+		
+		System.out.println("Please enter the word in French to add: "); // Enter the French translation for that word.
+		Scanner s = new Scanner(System.in);
+		String french = s.nextLine();
+		s.close();
+		
+		char[] characters = english.toCharArray(); // Get the first letter of the inputed word.
+		char firstChar = characters[0];
+		
+		try 
+		{
+			FileWriter f = new FileWriter(firstChar + "engtofrew.txt", true); // This adds to the file rather than writing over it so it can be added without deleting the file.
+			BufferedWriter b = new BufferedWriter(f);
+			PrintWriter p = new PrintWriter(b);
+			p.println(english);
+			p.close();
+			
+			FileWriter g = new FileWriter(firstChar + "engtofret.txt", true); // Adds the translation to the translation file.
+			BufferedWriter c = new BufferedWriter(g);
+			PrintWriter q = new PrintWriter(c);
+			q.println(french);
+			q.close();
+		} catch (FileNotFoundException e) 
+		{
+			System.out.println("Error, file not found: " + e);
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Error reading from files: " + e);
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * This is the same as the previous method but works for the French word and the English translation of that word.
+	 *  I made this separate rather than adding them both automatically in case it could be grammatically incorrect so it gives the user more freedom to add what they want to each.
+	 */
+	public void addFreToEng() 
+	{
+		System.out.println("Please enter the word in French to add: ");
+		Scanner r = new Scanner(System.in);
+		String french = r.nextLine();
+		r.close();
+		
+		System.out.println("Please enter the word in English to add: ");
+		Scanner s = new Scanner(System.in);
+		String english = s.nextLine();
+		s.close();
+		
+		char[] characters = french.toCharArray();
+		char firstChar = characters[0];
+		
+		try
+		{
+			FileWriter f = new FileWriter(firstChar + "fretoengw.txt", true);
+			BufferedWriter b = new BufferedWriter(f);
+			PrintWriter p = new PrintWriter(b);
+			p.println(french);
+			p.close();
+			
+			FileWriter g = new FileWriter(firstChar + "fretoengt.txt", true);
+			BufferedWriter c = new BufferedWriter(g);
+			PrintWriter q = new PrintWriter(c);
+			q.println(english);
+			q.close();
+		} catch (FileNotFoundException e) 
+		{
+			System.out.println("Error, file not found: " + e);
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Error reading from files: " + e);
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * This is method requests a file name and than translates that file and outputs it as a new .txt file.
+	 * The user inputs the file name and the name of the Translated file.
+	 * Then the file is read in line by line and parsed so each word can be translated and printed.
 	 */
 	public void translateFileEngToSpan() 
 	{
@@ -525,6 +911,353 @@ public class Translation {
 		System.out.println("Please enter the name you would like the translated file to have: "); // Enter the name of the new translated file.
 		Scanner r = new Scanner(System.in);
 		String translatedFile = s.nextLine();
+		r.close();
+		
+		try 
+		{
+			fileReader = new FileReader(file);
+			bufferedReader = new BufferedReader(fileReader);
+			outputStream = new FileOutputStream(translatedFile);
+			printWriter = new PrintWriter(outputStream);
+			
+			nextLine = bufferedReader.readLine(); // Read in the first line.
+			while (nextLine != null) // Whilst the line is not blank.
+			{
+				String[] line = nextLine.split("\\s"); // Split the line into separate words for translation.
+				for (int i = 0; i <= line.length; i++) // Do for each word in the line.
+				{
+					String temp = translateWord(1, line[i]); // Translate the word.
+					printWriter.print(temp + " "); //Print to file.
+					System.out.print(temp + " "); //Print to Console.
+					nextLine = bufferedReader.readLine(); //Read in the next line.
+				}
+			}
+			bufferedReader.close();
+			printWriter.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("Error, file not found: " + e);
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Error reading from files: " + e);
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * The same as the previous method but it translates the words from spanish to english.
+	 */
+	public void translateFileSpanToEng() 
+	{
+		FileReader fileReader;
+		BufferedReader bufferedReader;
+		String nextLine;
+		FileOutputStream outputStream;
+		PrintWriter printWriter;
+		
+		System.out.println("Please enter name of file to be translated:");
+		Scanner s = new Scanner(System.in);
+		String file = s.nextLine();
+		
+		System.out.println("Please enter the name you would like the translated file to have: ");
+		Scanner r = new Scanner(System.in);
+		String translatedFile = s.nextLine();
+		r.close();
+		
+		try 
+		{
+			fileReader = new FileReader(file);
+			bufferedReader = new BufferedReader(fileReader);
+			outputStream = new FileOutputStream(translatedFile);
+			printWriter = new PrintWriter(outputStream);
+			
+			nextLine = bufferedReader.readLine();
+			while (nextLine != null)
+			{
+				String[] line = nextLine.split("\\s");
+				for (int i = 0; i <= line.length; i++)
+				{
+					String temp = translateWord(2, line[i]);
+					printWriter.print(temp + " "); 
+					System.out.print(temp + " ");
+					nextLine = bufferedReader.readLine();
+				}
+			}
+			bufferedReader.close();
+			printWriter.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("Error, file not found: " + e);
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Error reading from files: " + e);
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * This is method requests a file name and than translates that file and outputs it as a new .txt file.
+	 * The user inputs the file name and the name of the Translated file.
+	 * Then the file is read in line by line and parsed so each word can be translated and printed.
+	 */
+	public void translateFileEngToFre()
+	{
+		FileReader fileReader;
+		BufferedReader bufferedReader;
+		String nextLine;
+		FileOutputStream outputStream;
+		PrintWriter printWriter;
+		
+		System.out.println("Please enter name of file to be translated:"); // Enter the name of the file to be translated.
+		Scanner s = new Scanner(System.in);
+		String file = s.nextLine();
+		
+		System.out.println("Please enter the name you would like the translated file to have: "); // Enter the name of the new translated file.
+		Scanner r = new Scanner(System.in);
+		String translatedFile = s.nextLine();
+		r.close();
+		
+		try 
+		{
+			fileReader = new FileReader(file);
+			bufferedReader = new BufferedReader(fileReader);
+			outputStream = new FileOutputStream(translatedFile);
+			printWriter = new PrintWriter(outputStream);
+			
+			nextLine = bufferedReader.readLine(); // Read in the first line.
+			while (nextLine != null) // Whilst the line is not blank.
+			{
+				String[] line = nextLine.split("\\s"); // Split the line into separate words for translation.
+				for (int i = 0; i <= line.length; i++) // Do for each word in the line.
+				{
+					String temp = translateWord(3, line[i]); // Translate the word.
+					printWriter.print(temp + " "); //Print to file.
+					System.out.print(temp + " "); //Print to Console.
+					nextLine = bufferedReader.readLine(); //Read in the next line.
+				}
+			}
+			bufferedReader.close();
+			printWriter.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("Error, file not found: " + e);
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Error reading from files: " + e);
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * The same as the previous method but it translates the words from french to english.
+	 */
+	public void translateFileFreToEng() 
+	{
+		FileReader fileReader;
+		BufferedReader bufferedReader;
+		String nextLine;
+		FileOutputStream outputStream;
+		PrintWriter printWriter;
+		
+		System.out.println("Please enter name of file to be translated:");
+		Scanner s = new Scanner(System.in);
+		String file = s.nextLine();
+		
+		System.out.println("Please enter the name you would like the translated file to have: ");
+		Scanner r = new Scanner(System.in);
+		String translatedFile = s.nextLine();
+		r.close();
+		
+		try 
+		{
+			fileReader = new FileReader(file);
+			bufferedReader = new BufferedReader(fileReader);
+			outputStream = new FileOutputStream(translatedFile);
+			printWriter = new PrintWriter(outputStream);
+			
+			nextLine = bufferedReader.readLine();
+			while (nextLine != null)
+			{
+				String[] line = nextLine.split("\\s");
+				for (int i = 0; i <= line.length; i++)
+				{
+					String temp = translateWord(4, line[i]);
+					printWriter.print(temp + " "); 
+					System.out.print(temp + " ");
+					nextLine = bufferedReader.readLine();
+				}
+			}
+			bufferedReader.close();
+			printWriter.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("Error, file not found: " + e);
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Error reading from files: " + e);
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * The same as the add method.
+	 * @param english however the word is inputed automatically
+	 */
+	public void autoAddEngToSpan(String english) 
+	{
+		System.out.println("The word you would like to enter a translation for is: " + english);
+		System.out.println("Please enter the spanish translation for the word: "); // Enter the Spanish translation for that word.
+		Scanner s = new Scanner(System.in);
+		String spanish = s.nextLine();
+		s.close();
+		
+		char[] characters = english.toCharArray(); // Get the first letter of the inputed word.
+		char firstChar = characters[0];
+		
+		try 
+		{
+			FileWriter f = new FileWriter(firstChar + "engtospanw.txt", true); // This adds to the file rather than writing over it so it can be added without deleting the file.
+			BufferedWriter b = new BufferedWriter(f);
+			PrintWriter p = new PrintWriter(b);
+			p.println(english);
+			p.close();
+			
+			FileWriter g = new FileWriter(firstChar + "engtospant.txt", true); // Adds the translation to the translation file.
+			BufferedWriter c = new BufferedWriter(g);
+			PrintWriter q = new PrintWriter(c);
+			q.println(spanish);
+			q.close();
+		} catch (FileNotFoundException e) 
+		{
+			System.out.println("Error, file not found: " + e);
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Error reading from files: " + e);
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * The same as the previous method but using Spanish to English
+	 * @param spanish
+	 */
+	public void autoAddSpanToEng(String spanish) 
+	{
+		System.out.println("The word you would like to enter a translation for is: " + spanish);
+		System.out.println("Please enter the english translation for the word: "); // Enter the english translation for that word.
+		Scanner s = new Scanner(System.in);
+		String english = s.nextLine();
+		s.close();
+		
+		char[] characters = spanish.toCharArray(); // Get the first letter of the inputed word.
+		char firstChar = characters[0];
+		
+		try 
+		{
+			FileWriter f = new FileWriter(firstChar + "spantoengw.txt", true); // This adds to the file rather than writing over it so it can be added without deleting the file.
+			BufferedWriter b = new BufferedWriter(f);
+			PrintWriter p = new PrintWriter(b);
+			p.println(spanish);
+			p.close();
+			
+			FileWriter g = new FileWriter(firstChar + "spantoengt.txt", true); // Adds the translation to the translation file.
+			BufferedWriter c = new BufferedWriter(g);
+			PrintWriter q = new PrintWriter(c);
+			q.println(english);
+			q.close();
+		} catch (FileNotFoundException e) 
+		{
+			System.out.println("Error, file not found: " + e);
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Error reading from files: " + e);
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * The same as the previous method but using English to French.
+	 * @param spanish
+	 */
+	public void autoAddEngToFre(String english) 
+	{
+		System.out.println("The word you would like to enter a translation for is: " + english);
+		System.out.println("Please enter the French translation for the word: "); // Enter the French translation for that word.
+		Scanner s = new Scanner(System.in);
+		String french = s.nextLine();
+		s.close();
+		
+		char[] characters = english.toCharArray(); // Get the first letter of the inputed word.
+		char firstChar = characters[0];
+		
+		try 
+		{
+			FileWriter f = new FileWriter(firstChar + "engtofrew.txt", true); // This adds to the file rather than writing over it so it can be added without deleting the file.
+			BufferedWriter b = new BufferedWriter(f);
+			PrintWriter p = new PrintWriter(b);
+			p.println(english);
+			p.close();
+			
+			FileWriter g = new FileWriter(firstChar + "engtofret.txt", true); // Adds the translation to the translation file.
+			BufferedWriter c = new BufferedWriter(g);
+			PrintWriter q = new PrintWriter(c);
+			q.println(french);
+			q.close();
+		} catch (FileNotFoundException e) 
+		{
+			System.out.println("Error, file not found: " + e);
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Error reading from files: " + e);
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * The same as the previous method but using French to English
+	 * @param spanish
+	 */
+	public void autoAddFreToEng(String french) 
+	{
+		System.out.println("The word you would like to enter a translation for is: " + french);
+		System.out.println("Please enter the english translation for the word: "); // Enter the English translation for that word.
+		Scanner s = new Scanner(System.in);
+		String english = s.nextLine();
+		s.close();
+		
+		char[] characters = french.toCharArray(); // Get the first letter of the inputed word.
+		char firstChar = characters[0];
+		
+		try 
+		{
+			FileWriter f = new FileWriter(firstChar + "fretoengw.txt", true); // This adds to the file rather than writing over it so it can be added without deleting the file.
+			BufferedWriter b = new BufferedWriter(f);
+			PrintWriter p = new PrintWriter(b);
+			p.println(french);
+			p.close();
+			
+			FileWriter g = new FileWriter(firstChar + "fretoengt.txt", true); // Adds the translation to the translation file.
+			BufferedWriter c = new BufferedWriter(g);
+			PrintWriter q = new PrintWriter(c);
+			q.println(english);
+			q.close();
+		} catch (FileNotFoundException e) 
+		{
+			System.out.println("Error, file not found: " + e);
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Error reading from files: " + e);
+			e.printStackTrace();
+		}
+	}
+	
+	public void testTranslateFileEngToSpan() 
+	{
+		FileReader fileReader;
+		BufferedReader bufferedReader;
+		String nextLine;
+		FileOutputStream outputStream;
+		PrintWriter printWriter;
+		
+		String file = "testToTranslate";
+		
+		String translatedFile = "testTranslated";
 		
 		try 
 		{
@@ -548,59 +1281,169 @@ public class Translation {
 			bufferedReader.close();
 			printWriter.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 	}
 	
-	/**
-	 * The same as the previous method but it translates the words from spanish to english.
-	 */
-	public void translateFileSpanToEng() 
+	public void testDeleteEngToSpan()
 	{
+		String english = "testWord";
+		
+		String spanish = translateWord(1, english); // get the translation for the word to delete.
+
+		char[] characters = english.toCharArray(); // Get the first letter of the word.
+		char firstChar = characters[0];
+		try
+		{
+			PrintWriter pw = new PrintWriter(firstChar + "engtospanwnew.txt"); //Create an output for the updated translation file.
+			BufferedReader br1 = new BufferedReader(new FileReader(firstChar + "engtospanw.txt")); //input the translation file as it currently is.
+			String line1 = br1.readLine();
+			while(line1 != null) //whilst the document isn't blank.
+			{
+				boolean flag = false;
+			
+				while(english != null) // while the English word isn't blank.
+				{
+					if(line1.contentEquals(english)) // If the current English word that is being processed isn't the one to be deleted print it, if it is then don't print (delete it).
+					{
+						flag = true;
+						break;
+					}
+				}
+				if(!flag)
+					pw.println(line1);
+				
+				line1 = br1.readLine();
+			}
+			pw.flush(); // Close tools.
+			br1.close();
+			pw.close();
+			
+		} catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 		FileReader fileReader;
 		BufferedReader bufferedReader;
 		String nextLine;
 		FileOutputStream outputStream;
 		PrintWriter printWriter;
-		
-		System.out.println("Please enter name of file to be translated:");
-		Scanner s = new Scanner(System.in);
-		String file = s.nextLine();
-		
-		System.out.println("Please enter the name you would like the translated file to have: ");
-		Scanner r = new Scanner(System.in);
-		String translatedFile = s.nextLine();
-		
-		try 
-		{
-			fileReader = new FileReader(file);
+			
+		try {
+			fileReader = new FileReader("engtospanwnew"); //Read in new file.
 			bufferedReader = new BufferedReader(fileReader);
-			outputStream = new FileOutputStream(translatedFile);
+			outputStream = new FileOutputStream("engtospanw"); // Output the new file under the name of the original.
 			printWriter = new PrintWriter(outputStream);
 			
-			nextLine = bufferedReader.readLine();
-			while (nextLine != null)
+			nextLine = bufferedReader.readLine(); // Read in the first line.
+			while (nextLine != null) // Do whilst the document is not blank
 			{
-				String[] line = nextLine.split("\\s");
-				for (int i = 0; i <= line.length; i++)
-				{
-					String temp = translateWord(2, line[i]);
-					printWriter.println(temp); 
-					System.out.println(temp);
-					nextLine = bufferedReader.readLine();
-				}
+				printWriter.println(nextLine); // Print the line to the updated original file.
+				nextLine = bufferedReader.readLine(); // Read in the next line.
 			}
 			bufferedReader.close();
 			printWriter.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Error reading from files: " + e);
+			e.printStackTrace();
+		}
+		
+		/**
+		 * Runs the same thing again but using the translation instead so both are erased.
+		 */
+		try
+		{
+			PrintWriter pw = new PrintWriter(firstChar + "engtospantnew.txt"); //Create an output for the updated translation file.
+			BufferedReader br1 = new BufferedReader(new FileReader(firstChar + "engtospant.txt")); //input the translation file as it currently is.
+			String line1 = br1.readLine();
+			while(line1 != null) //whilst the document isn't blank.
+			{
+				boolean flag = false;
+			
+				while(spanish != null)  // while the Spanish word isn't blank.
+				{
+					if(line1.contentEquals(spanish)) // If the current Spanish word that is being processed isn't the one to be deleted print it, if it is then don't print (delete it).
+					{
+						flag = true;
+						break;
+					}
+				}
+				if(!flag)
+					pw.println(line1);
+				
+				line1 = br1.readLine();
+			}
+			pw.flush();// Close tools.
+			br1.close();
+			pw.close();
+			
+		} catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+			
+		try {
+			fileReader = new FileReader("engtospantnew");//Read in new file.
+			bufferedReader = new BufferedReader(fileReader);
+			outputStream = new FileOutputStream("engtospant");// Output the new file under the name of the original.
+			printWriter = new PrintWriter(outputStream);
+			
+			nextLine = bufferedReader.readLine();// Read in the first line.
+			while (nextLine != null)// Do whilst the document is not blank
+			{
+				printWriter.println(nextLine); // Print the line to the updated original file.
+				nextLine = bufferedReader.readLine();// Read in the next line.
+			}
+			bufferedReader.close();
+			printWriter.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("Error, file not found: " + e);
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Error reading from files: " + e);
+			e.printStackTrace();
+		}
+	}
+	
+	public void testAddEngToSpan() 
+	{
+		String english = "test";
+		String spanish = "testTranslated";
+		
+		char[] characters = english.toCharArray(); // Get the first letter of the inputted word.
+		char firstChar = characters[0];
+		
+		try 
+		{
+			FileWriter f = new FileWriter(firstChar + "engtospanw.txt", true); // This adds to the file rather than writing over it so it can be added without deleting the file.
+			BufferedWriter b = new BufferedWriter(f);
+			PrintWriter p = new PrintWriter(b);
+			p.println(english);
+			p.close();
+			
+			FileWriter g = new FileWriter(firstChar + "engtospant.txt", true); // Adds the translation to the translation file.
+			BufferedWriter c = new BufferedWriter(g);
+			PrintWriter q = new PrintWriter(c);
+			q.println(spanish);
+			q.close();
+		} catch (FileNotFoundException e) 
+		{
+			System.out.println("Error, file not found: " + e);
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Error reading from files: " + e);
 			e.printStackTrace();
 		}
 	}

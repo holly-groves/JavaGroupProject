@@ -8,7 +8,6 @@
  */
 public class Test {
 	
-	Tree test = new Tree();
 	/**
 	 * Method to test creating the alphabet tree
 	 */
@@ -16,8 +15,11 @@ public class Test {
 	{
 		System.out.println("TESTS\n");
 		testCreatingTree();
-		//testDisplayingTreeEngToSpan();
-		//testDisplayingTreeSpanToEng();
+		testDisplayingTreeEngToSpan();
+		testDisplayingTreeSpanToEng();
+		testTranslation();
+		testTranslateWord();
+		
 	}
 	
 	/**
@@ -25,7 +27,7 @@ public class Test {
 	 */
 	public void testCreatingTree()
 	{
-		//Tree test = new Tree();
+		Tree test = new Tree();
 		System.out.println("Creating the alphabet tree");
 		test.createAlphabetTree();
 		System.out.println("\nIn-Order (alphabet)");
@@ -37,17 +39,87 @@ public class Test {
 	
 	public void testDisplayingTreeEngToSpan()
 	{
+		Tree test = new Tree();
 		System.out.println("Displaying English to Spanish dictionary.....");
 		test.displayTreeEngToSpan(test.getRoot());		
 		System.out.println("Test complete.");
 		System.out.println();
 	}
-	
+
 	public void testDisplayingTreeSpanToEng()
 	{
+		Tree test = new Tree();
 		System.out.println("Displaying Spanish to English dictionary.....");
 		test.displayTreeSpanToEng(test.getRoot());
 		System.out.println("Test complete.");
 		System.out.println();
+	}
+	
+	/**
+	 * Automated testing for; translate file, add and delete method.
+	 */
+	public void testTranslation()
+	{
+		Translation translation = new Translation();
+		System.out.println("Translate a file called test from english to spanish and rename it testTranslated.");
+		translation.testTranslateFileEngToSpan(); // will need a file called test.txt with a few random words on it.
+		System.out.println("\nTest add translation (add an english to spanish translation to the dictionary).");
+		translation.testAddEngToSpan();
+		System.out.println("\nDelete a translation (Delete an english to spanish translation called testWord and the translation testWordTranslated)");
+		translation.testDeleteEngToSpan();
+		System.out.println("Test complete.");
+	}
+	
+	public void testTranslateWord()
+	{
+		String word;
+		String tran;
+		Translation test = new Translation();
+		Tree tree = new Tree();
+		tree.createAlphabetTree();
+		System.out.println("Translate");
+		word = "skirt";
+		tran = test.translateWord(1, word);
+		System.out.println("Translation: " + tran);
+		word = "carrot";
+		tran = test.translateWord(1, word);
+		System.out.println("Translation: " + tran);
+		word = "open";
+		tran = test.translateWord(1, word);
+		System.out.println("Translation: " + tran);
+		
+		System.out.println();
+		word = "salir";
+		tran = test.translateWord(2, word);
+		System.out.println("Translation: " + tran);
+//		word = "zona";
+//		tran = test.translateWord(2, word);
+//		System.out.println("Translation: " + tran);
+	}
+	
+	public void testTranslatePhrase()
+	{
+		String phrase;
+		String tran;
+		Translation test = new Translation();
+		Tree tree = new Tree();
+		tree.createAlphabetTree();
+		System.out.println("Translate");
+		phrase = "How are you";
+		tran = test.translateWord(1, phrase);
+		if (tran == null)
+		{
+			tran = "";
+			String[] splitWords = phrase.split("\\s+");
+			for (int i = 0; i < splitWords.length; i++)
+			{
+				splitWords[i] = splitWords[i].replaceAll("[^\\w]", "");
+			}
+			for (int i = 0; i < splitWords.length; i++)
+			{
+				tran = test.translateWord(1, splitWords[i]) + " ";
+			}
+		}
+		System.out.println("Translation: " + tran);
 	}
 }

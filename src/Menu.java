@@ -93,8 +93,6 @@ public class Menu {
 			}
 			else if (choice == 2) //translate a phrase
 			{
-				Tree tree = new Tree();
-				tree.createAlphabetTree();
 				System.out.println("Translate a phrase: ");
 				
 				int langChoice = getLang();
