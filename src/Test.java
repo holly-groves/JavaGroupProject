@@ -18,8 +18,7 @@ public class Test {
 		testDisplayingTreeEngToSpan();
 		testDisplayingTreeSpanToEng();
 		testFileTranslation();
-		testAddEngToSpan();
-		testDeleteFromEngToSpan();
+		testAddAndDeleteEngToSpan();
 		testTranslateWord();
 
 		
@@ -70,20 +69,13 @@ public class Test {
 		System.out.println();
 	}
 	
-	public void testAddEngToSpan()
+	public void testAddAndDeleteEngToSpan()
 	{
 		Translation translation = new Translation();
 		System.out.println("\nTest add translation (add an english to spanish translation to the dictionary).");
-		translation.addEngToSpan(true, "testWord", "testWordTranslated");
-		System.out.println("Test complete.");
-		System.out.println();
-	}
-	
-	public void testDeleteFromEngToSpan()
-	{
-		Translation translation = new Translation();
+		translation.addEngToSpan(true, "myWillToLive", "NonExistent");
 		System.out.println("\nDelete a translation (Delete an english to spanish translation called testWord and the translation testWordTranslated)");
-		translation.deleteEngToSpan(true, "testWord");
+		translation.deleteEngToSpan(true, "myWillToLive");
 		System.out.println("Test complete.");
 		System.out.println();
 	}
