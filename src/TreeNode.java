@@ -1,12 +1,10 @@
 /**
- * 
+ * @author Group 13
  *
  */
 public class TreeNode {
 
 	private int letterId; //this will contain the lower case ASCII value
-	private String engFile;
-	private String spanFile;
 	private TreeNode left;
 	private TreeNode right;
 	
@@ -17,8 +15,6 @@ public class TreeNode {
 	public TreeNode(int id, String eng, String span)
 	{
 		this.letterId = id;
-		this.engFile = eng;
-		this.spanFile = span;
 		
 		this.left = null;
 		this.right = null;
@@ -40,21 +36,6 @@ public class TreeNode {
 		this.letterId = letterId;
 	}
 
-	public String getEngToSpanFile() {
-		return engFile;
-	}
-
-	public void setEngToSpanFile(String engToSpanFile) {
-		this.engFile = engToSpanFile;
-	}
-
-	public String getSpanToEngFile() {
-		return spanFile;
-	}
-
-	public void setSpanToEngFile(String spanToEngFile) {
-		this.spanFile = spanToEngFile;
-	}
 
 	/**
 	 * Gets the node left of the current tree node
