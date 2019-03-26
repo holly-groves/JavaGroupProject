@@ -86,16 +86,6 @@ public class Translation {
 				}
 				else
 				{
-					if (Menu.addWords == 1)
-					{
-						if (lang == 1)
-						{
-							autoAddEngToSpan(fileLine);
-						} else if (lang == 2)
-						{
-							autoAddSpanToEng(fileLine);
-						}
-					}
 					lineCount++;
 					fileLine = bufferedReader.readLine();
 				}

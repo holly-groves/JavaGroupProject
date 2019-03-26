@@ -6,7 +6,7 @@ import java.util.Scanner;
  */
 public class Menu {
 
-	static int addWords = 0;
+	int addWords = 0;
 	Scanner s = new Scanner(System.in);
 	
 	/**
@@ -81,7 +81,22 @@ public class Menu {
 				else
 				{
 					System.out.println("No translation found");
-					//option to add a translation setting thing goes here (Jack)
+					if(addWords == 1)
+					{
+						if (langChoice == 1) 
+						{
+							tran.autoAddEngToSpan(word);//option to add a translation setting thing goes here (Jack)
+						} else if(langChoice == 2)
+						{
+							tran.autoAddSpanToEng(word);
+						} else if(langChoice == 3)
+						{
+							tran.autoAddEngToFre(word);
+						} else if(langChoice == 4)
+						{
+							tran.autoAddFreToEng(word);
+						}
+					}
 				}
 			}
 			else if (choice == 2) //translate a phrase
@@ -90,30 +105,22 @@ public class Menu {
 			}
 			else if (choice == 3) //translate from a file
 			{
-				Translation translation = new Translation();
-				System.out.println("Woudld you like to translate:"); 
-				System.out.println("1. English to Spanish."); 
-				System.out.println("2. Spanish to English."); 
-				System.out.println("3. English to French."); 
-				System.out.println("4. French to English."); 
-				Scanner s = new Scanner(System.in);
-				int language = s.nextInt();
-				s.close();
-				if (language == 1)
+				int langChoice = getLang();
+				if (langChoice == 1)
 				{
-					translation.translateFileEngToSpan();
+					tran.translateFileEngToSpan();
 				}
-				if (language == 2)
+				if (langChoice == 2)
 				{
-					translation.translateFileSpanToEng();
+					tran.translateFileSpanToEng();
 				}
-				if (language == 3)
+				if (langChoice == 3)
 				{
-					translation.translateFileEngToFre();
+					tran.translateFileEngToFre();
 				}
-				if (language == 4)
+				if (langChoice == 4)
 				{
-					translation.translateFileFreToEng();
+					tran.translateFileFreToEng();
 				}
 			}
 			else if (choice == 4) //search for a translation
@@ -137,58 +144,42 @@ public class Menu {
 			}
 			else if (choice == 5) //add a translation
 			{
-				Translation translation = new Translation();
-				System.out.println("Woudld you like to add a translation from:"); 
-				System.out.println("1. English to Spanish."); 
-				System.out.println("2. Spanish to English."); 
-				System.out.println("3. English to French."); 
-				System.out.println("4. French to English."); 
-				Scanner s = new Scanner(System.in);
-				int language = s.nextInt();
-				s.close();
-				if (language == 1)
+				int langChoice = getLang();
+				if (langChoice == 1)
 				{
-					translation.addEngToSpan();
+					tran.addEngToSpan();
 				}
-				if (language == 2)
+				if (langChoice == 2)
 				{
-					translation.addSpanToEng();
+					tran.addSpanToEng();
 				}
-				if (language == 3)
+				if (langChoice == 3)
 				{
-					translation.addEngToFre();
+					tran.addEngToFre();
 				}
-				if (language == 4)
+				if (langChoice == 4)
 				{
-					translation.addFreToEng();
+					tran.addFreToEng();
 				}//Jack
 			}
 			else if (choice == 6) //remove a translation
 			{
-				Translation translation = new Translation();
-				System.out.println("Woudld you like to remove a translation from:"); 
-				System.out.println("1. English to Spanish."); 
-				System.out.println("2. Spanish to English."); 
-				System.out.println("3. English to French."); 
-				System.out.println("4. French to English."); 
-				Scanner s = new Scanner(System.in);
-				int language = s.nextInt();
-				s.close();
-				if (language == 1)
+				int langChoice = getLang();
+				if (langChoice == 1)
 				{
-					translation.deleteEngToSpan();
+					tran.deleteEngToSpan();
 				}
-				if (language == 2)
+				if (langChoice == 2)
 				{
-					translation.deleteSpanToEng();
+					tran.deleteSpanToEng();
 				}
-				if (language == 3)
+				if (langChoice == 3)
 				{
-					translation.deleteEngToFre();
+					tran.deleteEngToFre();
 				}
-				if (language == 4)
+				if (langChoice == 4)
 				{
-					translation.deleteFreToEng();
+					tran.deleteFreToEng();
 				}//Jack
 			}
 			else if (choice == 7) //display dictionaries
