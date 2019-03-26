@@ -159,7 +159,6 @@ public class Translation {
 	{
 		tree.createAlphabetTree();
 		String english;
-		String spanish = "testWordTranslated";
 		if (test == false)
 		{
 			System.out.println("Please enter the word in Englsh to delete: "); // Enter the English word to delete.
@@ -171,7 +170,7 @@ public class Translation {
 			english = testWord;
 		}
 		
-		//String spanish = translateWord(1, english); // get the translation for the word to delete.
+		String spanish = translateWord(1, english); // get the translation for the word to delete.
 
 		char[] characters = english.toCharArray(); // Get the first letter of the word.
 		char firstChar = characters[0];
@@ -294,13 +293,20 @@ public class Translation {
 	/**
 	 * This is the same as the previous method except it requests the Spanish word to delete.
 	 */
-	public void deleteSpanToEng()
+	public void deleteSpanToEng(boolean test, String testWord)
 	{
 		tree.createAlphabetTree();
-		System.out.println("Please enter the word in Spanish to delete: ");
-		Scanner r = new Scanner(System.in);
-		String spanish = r.nextLine();
-		r.close();
+		if (test == false)
+		{
+			System.out.println("Please enter the word in Spanish to delete: ");
+			Scanner r = new Scanner(System.in);
+			String spanish = r.nextLine();
+			r.close();
+		} else 
+		{
+			spanish = testWord;
+		}
+		
 		String english = translateWord(2, spanish);
 
 		char[] characters = spanish.toCharArray();
@@ -424,13 +430,19 @@ public class Translation {
 	 * Allows the user to delete an English word and its translation from the dictionary.
 	 * The user enters the word and the word is than translated, both the word and its translations are then found and deleted.
 	 */
-	public void deleteEngToFre()
+	public void deleteEngToFre(boolean test, String testWord)
 	{
 		tree.createAlphabetTree();
-		System.out.println("Please enter the word in Englsh to delete: "); // Enter the English word to delete.
-		Scanner r = new Scanner(System.in);
-		String english = r.nextLine();
-		r.close();
+		if (test == false)
+		{
+			System.out.println("Please enter the word in Englsh to delete: "); // Enter the English word to delete.
+			Scanner r = new Scanner(System.in);
+			String english = r.nextLine();
+			r.close();
+		} else
+		{
+			english = testWord;	
+		}
 		
 		String french = translateWord(3, english); // get the translation for the word to delete.
 
@@ -558,14 +570,20 @@ public class Translation {
 	/**
 	 * This is the same as the previous method except it requests the French word to delete.
 	 */
-	public void deleteFreToEng()
+	public void deleteFreToEng(boolean test, String testWord)
 	{
 		tree.createAlphabetTree();
-		System.out.println("Please enter the word in Spanish to delete: ");
-		Scanner r = new Scanner(System.in);
-		String french = r.nextLine();
-		r.close();
-		
+		if (test == false)
+		{
+			System.out.println("Please enter the word in Spanish to delete: ");
+			Scanner r = new Scanner(System.in);
+			String french = r.nextLine();
+			r.close();
+		} else 
+		{
+			french = testWord;
+		}
+			
 		String english = translateWord(4, french);
 
 		char[] characters = french.toCharArray();
@@ -737,8 +755,10 @@ public class Translation {
 	 * This is the same as the previous method but works for the Spanish word and the English translation of that word.
 	 *  I made this separate rather than adding them both automatically in case it could be grammatically incorrect so it gives the user more freedom to add what they want to each.
 	 */
-	public void addSpanToEng() 
+	public void addSpanToEng(boolean test, String testWord, String testWordTwo) 
 	{
+		if (test == false)
+		{
 		System.out.println("Please enter the word in Spanish to add: ");
 		Scanner r = new Scanner(System.in);
 		String spanish = r.nextLine();
@@ -747,6 +767,11 @@ public class Translation {
 		Scanner s = new Scanner(System.in);
 		String english = s.nextLine();
 		s.close();
+		} else
+		{
+			spanish = testWord;
+			english = testWordTwo;
+		}
 		
 		char[] characters = spanish.toCharArray();
 		char firstChar = characters[0];
@@ -778,8 +803,10 @@ public class Translation {
 	 * Adds an English word and its translation to the dictionary.
 	 * Requests both the word and its translation and adds them to the file without writing over them.
 	 */
-	public void addEngToFre() 
+	public void addEngToFre(boolean test, String testWord, String testWordTwo) 
 	{
+		if (test == false)
+		{
 		System.out.println("Please enter the word in Englsh to add: "); //Enter the English word.
 		Scanner r = new Scanner(System.in);
 		String english = r.nextLine();
@@ -789,6 +816,11 @@ public class Translation {
 		Scanner s = new Scanner(System.in);
 		String french = s.nextLine();
 		s.close();
+		} else
+		{
+			english = testWord;
+			spanish = testWordTwo;
+		}
 		
 		char[] characters = english.toCharArray(); // Get the first letter of the inputed word.
 		char firstChar = characters[0];
@@ -820,8 +852,10 @@ public class Translation {
 	 * This is the same as the previous method but works for the French word and the English translation of that word.
 	 *  I made this separate rather than adding them both automatically in case it could be grammatically incorrect so it gives the user more freedom to add what they want to each.
 	 */
-	public void addFreToEng() 
+	public void addFreToEng(boolean test, String testWord, String testWordTwo) 
 	{
+		if (test == false)
+		{
 		System.out.println("Please enter the word in French to add: ");
 		Scanner r = new Scanner(System.in);
 		String french = r.nextLine();
@@ -831,7 +865,12 @@ public class Translation {
 		Scanner s = new Scanner(System.in);
 		String english = s.nextLine();
 		s.close();
-		
+		} else
+		{
+			french = testWord;
+			english = testWordTwo;
+		}
+			
 		char[] characters = french.toCharArray();
 		char firstChar = characters[0];
 		
@@ -924,7 +963,7 @@ public class Translation {
 	/**
 	 * The same as the previous method but it translates the words from spanish to english.
 	 */
-	public void translateFileSpanToEng() 
+	public void translateFileSpanToEng(boolean test, String testWord, String testWordTwo) 
 	{
 		tree.createAlphabetTree();
 		FileReader fileReader;
@@ -933,6 +972,8 @@ public class Translation {
 		FileOutputStream outputStream;
 		PrintWriter printWriter;
 		
+		if (test == false)
+		{
 		System.out.println("Please enter name of file to be translated:");
 		Scanner s = new Scanner(System.in);
 		String file = s.nextLine();
@@ -941,6 +982,11 @@ public class Translation {
 		Scanner r = new Scanner(System.in);
 		String translatedFile = s.nextLine();
 		r.close();
+		} else
+		{
+			file = testWord;
+			translatedFile = testWordTwo;
+		}
 		
 		try 
 		{
@@ -977,7 +1023,7 @@ public class Translation {
 	 * The user inputs the file name and the name of the Translated file.
 	 * Then the file is read in line by line and parsed so each word can be translated and printed.
 	 */
-	public void translateFileEngToFre()
+	public void translateFileEngToFre(boolean test, String testWord, String testWordTwo)
 	{
 		tree.createAlphabetTree();
 		FileReader fileReader;
@@ -986,6 +1032,8 @@ public class Translation {
 		FileOutputStream outputStream;
 		PrintWriter printWriter;
 		
+		if (test == false)
+		{
 		System.out.println("Please enter name of file to be translated:"); // Enter the name of the file to be translated.
 		Scanner s = new Scanner(System.in);
 		String file = s.nextLine();
@@ -994,6 +1042,11 @@ public class Translation {
 		Scanner r = new Scanner(System.in);
 		String translatedFile = s.nextLine();
 		r.close();
+		} else 
+		{
+			file = testWord;
+			translatedFile = testWordTwo;
+		}
 		
 		try 
 		{
@@ -1028,7 +1081,7 @@ public class Translation {
 	/**
 	 * The same as the previous method but it translates the words from spanish to english.
 	 */
-	public void translateFileFreToEng() 
+	public void translateFileFreToEng(boolean test, String testWord, String testWordTwo) 
 	{
 		tree.createAlphabetTree();
 		FileReader fileReader;
@@ -1037,6 +1090,8 @@ public class Translation {
 		FileOutputStream outputStream;
 		PrintWriter printWriter;
 		
+		if (test == false)
+		{
 		System.out.println("Please enter name of file to be translated:");
 		Scanner s = new Scanner(System.in);
 		String file = s.nextLine();
@@ -1045,6 +1100,11 @@ public class Translation {
 		Scanner r = new Scanner(System.in);
 		String translatedFile = s.nextLine();
 		r.close();
+		} else 
+		{
+			file = testWord;
+			translatedFile = testWordTwo;
+		}
 		
 		try 
 		{
