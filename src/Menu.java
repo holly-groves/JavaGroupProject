@@ -67,6 +67,14 @@ public class Menu {
 				{
 					translation = tran.translateWord(2, word);
 				}
+				else if (langChoice == 3) //english to french
+				{
+					translation = tran.translateWord(3, word);
+				}
+				else if (langChoice == 4) //french to english
+				{
+					translation = tran.translateWord(4, word);
+				}
 				else //invalid
 				{
 					System.out.println("Invalid choice, enter again");
@@ -85,7 +93,6 @@ public class Menu {
 			}
 			else if (choice == 2) //translate a phrase
 			{
-				//Michael
 				System.out.println("Translate a phrase: ");
 				
 				int langChoice = getLang();

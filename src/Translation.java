@@ -25,6 +25,8 @@ public class Translation {
 	 * method to translate a word
 	 * 1 for english to spanish
 	 * 2 for spanish to english
+	 * 3 for english to french
+	 * 4 for french to english
 	 * @param lang int containing which language to translate to/from (see above)
 	 * @param translate String containing the word to be translated
 	 * @return String containing the translation
