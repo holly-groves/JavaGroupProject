@@ -37,7 +37,7 @@ public class Menu {
 			System.out.println("5. Add a translation");
 			System.out.println("6. Remove a translation");
 			System.out.println("7. Display dictonaries");
-			System.out.println("8. Auto ask to add a translation.");//option 8. is turning the add a translation setting on and off (Jack)
+			//option 8. is turning the add a translation setting on and off (Jack)
 			System.out.println("9. Run Automated Tests");
 			System.out.println("0. Exit");
 			
@@ -68,6 +68,14 @@ public class Menu {
 				{
 					translation = tran.translateWord(2, word);
 				}
+				else if (langChoice == 3) //english to french
+				{
+					translation = tran.translateWord(3, word);
+				}
+				else if (langChoice == 4) //french to english
+				{
+					translation = tran.translateWord(4, word);
+				}
 				else //invalid
 				{
 					System.out.println("Invalid choice, enter again");
@@ -96,19 +104,151 @@ public class Menu {
 						{
 							tran.autoAddFreToEng(word);
 						}
-					}
+					}//option to add a translation setting thing goes here (Jack)
 				}
 			}
 			else if (choice == 2) //translate a phrase
 			{
-				//Michael
+				System.out.println("Translate a phrase: ");
+				
+				int langChoice = getLang();
+				
+				String phrase = getPhrase();
+				String translatePhrase = "";
+				
+				if (langChoice == 1) // English to Spanish
+				{
+					translatePhrase = tran.translateWord(1, phrase);
+					if (translatePhrase == null)
+					{
+						translatePhrase = "";
+						String[] splitWords = phrase.split("\\s+");
+						for (int i = 0; i < splitWords.length; i++)
+						{
+							splitWords[i] = splitWords[i].replaceAll("[^\\w]", "");
+						}
+						for (int i = 0; i < splitWords.length; i++)
+						{
+							translatePhrase = tran.translateWord(1, splitWords[i]) + " ";
+						}
+						if (translatePhrase != null)
+						{
+							System.out.println(phrase + " - " + translatePhrase);
+						}
+						else
+						{
+							System.out.println("No translation found.");
+							
+						}
+					}
+					else
+					{
+						System.out.println(phrase + " - " + translatePhrase);
+					}
+				}
+				
+				else if (langChoice == 2) // Spanish to English
+				{
+					translatePhrase = tran.translateWord(2, phrase);
+					if (translatePhrase == null)
+					{
+						translatePhrase = "";
+						String[] splitWords = phrase.split("\\s+");
+						for (int i = 0; i < splitWords.length; i++)
+						{
+							splitWords[i] = splitWords[i].replaceAll("[^\\w]", "");
+						}
+						for (int i = 0; i < splitWords.length; i++)
+						{
+							translatePhrase = tran.translateWord(2, splitWords[i]) + " ";
+						}
+						if (translatePhrase != null)
+						{
+							System.out.println(phrase + " - " + translatePhrase);
+						}
+						else
+						{
+							System.out.println("No translation found.");
+						}
+					}
+					else
+					{
+						System.out.println(phrase + " - " + translatePhrase);
+					}
+				}
+				
+				else if (langChoice == 3) // English to French
+				{
+					translatePhrase = tran.translateWord(3, phrase);
+					if (translatePhrase == null)
+					{
+						translatePhrase = "";
+						String[] splitWords = phrase.split("\\s+");
+						for (int i = 0; i < splitWords.length; i++)
+						{
+							splitWords[i] = splitWords[i].replaceAll("[^\\w]", "");
+						}
+						for (int i = 0; i < splitWords.length; i++)
+						{
+							translatePhrase = tran.translateWord(3, splitWords[i]) + " ";
+						}
+						if (translatePhrase != null)
+						{
+							System.out.println(phrase + " - " + translatePhrase);
+						}
+						else
+						{
+							System.out.println("No translation found.");
+						}
+					}
+					else
+					{
+						System.out.println(phrase + " - " + translatePhrase);
+					}
+				}
+				
+				else if (langChoice == 4) // French to English
+				{
+					translatePhrase = tran.translateWord(4, phrase);
+					if (translatePhrase == null)
+					{
+						translatePhrase = "";
+						String[] splitWords = phrase.split("\\s+");
+						for (int i = 0; i < splitWords.length; i++)
+						{
+							splitWords[i] = splitWords[i].replaceAll("[^\\w]", "");
+						}
+						for (int i = 0; i < splitWords.length; i++)
+						{
+							translatePhrase = tran.translateWord(4, splitWords[i]) + " ";
+						}
+						if (translatePhrase != null)
+						{
+							System.out.println(phrase + " - " + translatePhrase);
+						}
+						else
+						{
+							System.out.println("No translation found.");
+						}
+					}
+					else
+					{
+						System.out.println(phrase + " - " + translatePhrase);
+					}
+				}
+				else //invalid
+				{
+					System.out.println("Invalid choice, enter again");
+					runMenu();
+				}
+				
 			}
-			else if (choice == 3) //translate from a file
+			else if (choice == 3) //translate from a file          this needs to be added!!!!!!!!!!!!!
 			{
 				int langChoice = getLang();
 				if (langChoice == 1)
 				{
-					tran.translateFileEngToSpan();
+					tran.translateFileEngToSpan(false, "blank", "blank");
 				}
 				if (langChoice == 2)
 				{
@@ -121,9 +261,9 @@ public class Menu {
 				if (langChoice == 4)
 				{
 					tran.translateFileFreToEng();
-				}
+				}//Jack
 			}
-			else if (choice == 4) //search for a translation
+			else if (choice == 4) //search for a translation  
 			{
 				String word = getWord();
 				int lang = getLang();
@@ -142,12 +282,12 @@ public class Menu {
 					System.out.println(word + " - " + search);
 				}		
 			}
-			else if (choice == 5) //add a translation
+			else if (choice == 5) //add a translation         this needs to be added!!!!!!!!!!!!!
 			{
 				int langChoice = getLang();
 				if (langChoice == 1)
 				{
-					tran.addEngToSpan();
+					tran.addEngToSpan(false, "blank", "blank");
 				}
 				if (langChoice == 2)
 				{
@@ -162,12 +302,12 @@ public class Menu {
 					tran.addFreToEng();
 				}//Jack
 			}
-			else if (choice == 6) //remove a translation
+			else if (choice == 6) //remove a translation         this needs to be added!!!!!!!!!!!!!
 			{
 				int langChoice = getLang();
 				if (langChoice == 1)
 				{
-					tran.deleteEngToSpan();
+					tran.deleteEngToSpan(false, "blank");
 				}
 				if (langChoice == 2)
 				{
@@ -184,7 +324,27 @@ public class Menu {
 			}
 			else if (choice == 7) //display dictionaries
 			{
-				//Michael
+				Tree dictionary = new Tree();
+				dictionary.createAlphabetTree();
+				Scanner s = new Scanner(System.in);
+				
+				int i = getLang();
+				if (i == 1)
+				{
+					dictionary.displayTreeEngToSpan(dictionary.getRoot());
+				}
+				if (i == 2)
+				{
+					dictionary.displayTreeSpanToEng(dictionary.getRoot());
+				}
+				if (i == 3)
+				{
+					dictionary.displayTreeEngToFre(dictionary.getRoot());
+				}
+				if (i == 4)
+				{
+					dictionary.displayTreeFreToEng(dictionary.getRoot());
+				}
 			}
 			else if (choice == 8) //turn the add a translation setting thingy on or off
 			{
@@ -196,14 +356,13 @@ public class Menu {
 				{
 					System.out.println("You have activated the auto add translation feature.");
 					addWords = 1;
-				}
+				}//Jack
 			}
 			else if (choice == 9) //run automated tests
 			{
 				Test test = new Test();
 				System.out.println("Tests:"); //Tests need added (everyone)
 				test.treeTest();
-				test.testTranslation();
 			}
 			else if (choice == 0)
 			{
@@ -229,6 +388,13 @@ public class Menu {
 		return word;
 	}
 	
+	public String getPhrase()
+	{
+		System.out.println("Enter the phrase to translate: ");
+		String phrase = s.nextLine();
+		return phrase;
+	}
+	
 	/**
 	 * gets the language to be translated to from the user
 	 * @return int containing which language to use when translating
@@ -238,6 +404,8 @@ public class Menu {
 		int lang = 0;
 		System.out.println("1. English to Spanish");
 		System.out.println("2. Spanish to English");
+		System.out.println("3. English to French");
+		System.out.println("4. French to English");
 		System.out.println("Enter choice: ");
 		try
 		{
