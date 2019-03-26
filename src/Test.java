@@ -16,8 +16,8 @@ public class Test {
 	{
 		System.out.println("TESTS\n");
 		testCreatingTree();
-		testDisplayingTreeEngToSpan();
-		testDisplayingTreeSpanToEng();
+		//testDisplayingTreeEngToSpan();
+		//testDisplayingTreeSpanToEng();
 	}
 	
 	/**

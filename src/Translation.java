@@ -34,6 +34,7 @@ public class Translation {
 	public String translateWord(int lang, String translate)
 	{
 		TreeNode letterNode = null;
+		tree.createAlphabetTree();
 		if (translate != null)
 		{
 			char letter = translate.charAt(0); //gets the first letter in the word

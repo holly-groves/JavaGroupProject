@@ -93,6 +93,8 @@ public class Menu {
 			}
 			else if (choice == 2) //translate a phrase
 			{
+				Tree tree = new Tree();
+				tree.createAlphabetTree();
 				System.out.println("Translate a phrase: ");
 				
 				int langChoice = getLang();
@@ -118,10 +120,6 @@ public class Menu {
 						if (translatePhrase != null)
 						{
 							System.out.println(phrase + " - " + translatePhrase);
-						}
-						else
-						{
-							System.out.println("No translation found.");
 						}
 					}
 					else
@@ -149,10 +147,6 @@ public class Menu {
 						{
 							System.out.println(phrase + " - " + translatePhrase);
 						}
-						else
-						{
-							System.out.println("No translation found.");
-						}
 					}
 					else
 					{
@@ -179,10 +173,6 @@ public class Menu {
 						{
 							System.out.println(phrase + " - " + translatePhrase);
 						}
-						else
-						{
-							System.out.println("No translation found.");
-						}
 					}
 					else
 					{
@@ -208,10 +198,6 @@ public class Menu {
 						if (translatePhrase != null)
 						{
 							System.out.println(phrase + " - " + translatePhrase);
-						}
-						else
-						{
-							System.out.println("No translation found.");
 						}
 					}
 					else
