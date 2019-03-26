@@ -14,10 +14,8 @@ public class Menu {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		//Menu menu = new Menu();
-		//menu.runMenu();
-		Test test = new Test();
-		test.testTranslation();
+		Menu menu = new Menu();
+		menu.runMenu();
 	}
 	
 	/**
@@ -205,7 +203,6 @@ public class Menu {
 				Test test = new Test();
 				System.out.println("Tests:"); //Tests need added (everyone)
 				test.treeTest();
-				test.testTranslation();
 			}
 			else if (choice == 0)
 			{

@@ -32,13 +32,25 @@ public class Test {
 	/**
 	 * Automated testing for; translate file, add and delete method.
 	 */
-	public void testTranslation()
+	public void testTranslatingAFile()
 	{
 		Translation translation = new Translation();
-		System.out.println("Translate a file called test from english to spanish and rename it testTranslated.");
+		System.out.println("\nTranslate a file (translate the test.txt file from english to spanish and rename it testTranslated.");
 		translation.testTranslateFileEngToSpan(); // will need a file called test.txt with a few random words on it.
+		System.out.println("Test complete.");
+	}
+	
+	public void testAddingToAFile()
+	{
+		Translation translation = new Translation();
 		System.out.println("\nTest add translation (add an english to spanish translation to the dictionary).");
 		translation.testAddEngToSpan();
+		System.out.println("Test complete.");
+	}
+	
+	public void testDeletingFromAFile()
+	{
+		Translation translation = new Translation();
 		System.out.println("\nDelete a translation (Delete an english to spanish translation called testWord and the translation testWordTranslated)");
 		translation.testDeleteEngToSpan();
 		System.out.println("Test complete.");
