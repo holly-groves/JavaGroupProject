@@ -252,15 +252,15 @@ public class Menu {
 				}
 				if (langChoice == 2)
 				{
-					tran.translateFileSpanToEng();
+					tran.translateFileSpanToEng(false, "blank", "blank");
 				}
 				if (langChoice == 3)
 				{
-					tran.translateFileEngToFre();
+					tran.translateFileEngToFre(false, "blank", "blank");
 				}
 				if (langChoice == 4)
 				{
-					tran.translateFileFreToEng();
+					tran.translateFileFreToEng(false, "blank", "blank");
 				}//Jack
 			}
 			else if (choice == 4) //search for a translation  
@@ -291,15 +291,15 @@ public class Menu {
 				}
 				if (langChoice == 2)
 				{
-					tran.addSpanToEng();
+					tran.addSpanToEng(false, "blank", "blank");
 				}
 				if (langChoice == 3)
 				{
-					tran.addEngToFre();
+					tran.addEngToFre(false, "blank", "blank");
 				}
 				if (langChoice == 4)
 				{
-					tran.addFreToEng();
+					tran.addFreToEng(false, "blank", "blank");
 				}//Jack
 			}
 			else if (choice == 6) //remove a translation         this needs to be added!!!!!!!!!!!!!
@@ -311,15 +311,15 @@ public class Menu {
 				}
 				if (langChoice == 2)
 				{
-					tran.deleteSpanToEng();
+					tran.deleteSpanToEng(false, "blank");
 				}
 				if (langChoice == 3)
 				{
-					tran.deleteEngToFre();
+					tran.deleteEngToFre(false, "blank");
 				}
 				if (langChoice == 4)
 				{
-					tran.deleteFreToEng();
+					tran.deleteFreToEng(false, "blank");
 				}//Jack
 			}
 			else if (choice == 7) //display dictionaries
