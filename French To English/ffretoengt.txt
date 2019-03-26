@@ -15,11 +15,11 @@ fabulously
 fabulous
 fabulist
 uni
-facsimile
 facade
+facsimile
 fermentation
 ferment
-to close
+close
 lock
 close double turn
 close to lock
@@ -81,13 +81,13 @@ drilling machine
 flat rate
 hospital package
 unlimited package
-holiday package
 inclusive
+holiday package
 boastfulness
 wrought
 wrought
 forged from scratch
-to forge
+forge
 black-smith
 formaldehyde
 formalism

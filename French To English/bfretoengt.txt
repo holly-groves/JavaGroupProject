@@ -1,10 +1,10 @@
 buttermilk
 ferry
-to botch
-to banter
+botch
+banter
 luggage
 fight
-to fight
+fight
 trinket
 ring
 engagement ring
@@ -12,10 +12,10 @@ French bread
 bathtub
 bathtub
 bubble bath
-to kiss
-to trail around
+kiss
+trail around
 broom
-to stammer
+stammer
 balcony
 brawny
 sign
@@ -29,30 +29,30 @@ bank
 shed
 chatter
 goatee
-to block
+block
 barrette
 stockings
 basketball
 conditioner
-to chat
-to dribble
+chat
+dribble
 blurry
 smudge
 handsome
 a lot
 brother-in-law
 beak
-to stammer
+stammer
 Belgian
 pretty
 volunteer
-to bless
+bless
 Benjamin
 Benedict
 shore
-to cradle
+cradle
 disaster
-to fool
+fool
 work
 bug
 silly
@@ -83,19 +83,19 @@ pale
 joke
 white
 laundromat
-coat of arms, heraldry
-to hurt
+heraldry
+hurt
 blue
 light blue 
 dark blue
 block
 blond
 jacket
-to bluff
-to drink
+bluff
+drink
 wood
 drink
-to limp
+limp
 bowl
 good
 enjoy your meal
@@ -105,22 +105,22 @@ Good night
 Good evening
 mess
 narrow-minded
-to work
+work
 boots
 directory
 mouth
 mouthful
-to cork
+cork
 butcher
 butcher shop
 cork
 curly
 earring
 shield
-to sulk
+sulk
 bursting out of
 mud
-to be full
+be full
 terribly
 boiling
 baker
@@ -132,6 +132,6 @@ book
 stuffed
 torturer
 scholarship
-to hurry
+hurry
 grub
 bottle

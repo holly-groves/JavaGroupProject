@@ -2,7 +2,6 @@ chessboard
 echo
 scan
 befall
-to come to sb
 shop
 fail
 fail an exam
@@ -46,7 +45,7 @@ ecocertification
 disgusting
 nausea
 nauseate
-to sneer
+sneer
 écographe
 church
 ego
@@ -61,7 +60,7 @@ selfishly
 kill
 egotism
 sewer
-to get worse
+get worse
 empirical
 empiricism
 location

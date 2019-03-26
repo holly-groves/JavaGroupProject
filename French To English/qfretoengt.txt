@@ -2,7 +2,7 @@ classifiable
 qualifier
 qualification
 qualified
-to qualify
+qualify
 quark
 quarter
 quintuple

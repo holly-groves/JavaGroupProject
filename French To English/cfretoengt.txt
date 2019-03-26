@@ -24,14 +24,12 @@ cardboard
 drawing board
 Invitation Card
 yellow card
-solid carton for qn
 Red card
-paperboard
 cartonnage
 hardback
+paperboard
 cartridge
 bandolier
-case
 case
 case of conscience
 force majeure
@@ -45,8 +43,8 @@ stuntman
 hut
 casemate
 cram
-to put it somewhere
-to put somebody somewhere
+put it somewhere
+put somebody somewhere
 barrack
 barrack buildings
 cash
@@ -125,8 +123,6 @@ thatch
 cottage
 shoehorn
 shoe-hatch
-
-color
 colourist
 colossal
 colossus

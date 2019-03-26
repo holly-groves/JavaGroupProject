@@ -24,15 +24,13 @@ carton
 carton à dessin
 carton d’invitation
 carton jaune
-carton plein pour qn
 carton rouge
-carton-pâte
 cartonnage
 cartonné
+carton-pâte
 cartouche
 cartouchière
 cas
-cas d’espèce
 cas de conscience
 cas de force majeure
 cas limite
@@ -125,7 +123,6 @@ chaume
 chaumière
 chausse-pied
 chausse-trappe
-coloris
 coloriste
 colossal
 colosse
