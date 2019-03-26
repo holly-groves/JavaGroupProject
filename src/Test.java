@@ -19,7 +19,10 @@ public class Test {
 		testDisplayingTreeSpanToEng();
 		testTranslation();
 		testTranslateWord();
-		
+		testTranslatePhraseEngToSpan();
+		testTranslatePhraseSpanToEng();
+		testTranslatePhraseEngToFre();
+		testTranslatePhraseFreToEng();
 	}
 	
 	/**
@@ -97,7 +100,7 @@ public class Test {
 //		System.out.println("Translation: " + tran);
 	}
 	
-	public void testTranslatePhrase()
+	public void testTranslatePhraseEngToSpan()
 	{
 		String phrase;
 		String tran;
@@ -105,8 +108,47 @@ public class Test {
 		Tree tree = new Tree();
 		tree.createAlphabetTree();
 		System.out.println("Translate");
-		phrase = "I want cake";
+		phrase = "i want chocolate cake";
 		tran = test.translatePhrase(1, phrase);
+		System.out.println("Translation: " + tran);
+	}
+	
+	public void testTranslatePhraseSpanToEng()
+	{
+		String phrase;
+		String tran;
+		Translation test = new Translation();
+		Tree tree = new Tree();
+		tree.createAlphabetTree();
+		System.out.println("Translate");
+		phrase = "buenos días a ti";
+		tran = test.translatePhrase(2, phrase);
+		System.out.println("Translation: " + tran);
+	}
+	
+	public void testTranslatePhraseEngToFre()
+	{
+		String phrase;
+		String tran;
+		Translation test = new Translation();
+		Tree tree = new Tree();
+		tree.createAlphabetTree();
+		System.out.println("Translate");
+		phrase = "the library is empty";
+		tran = test.translatePhrase(3, phrase);
+		System.out.println("Translation: " + tran);
+	}
+	
+	public void testTranslatePhraseFreToEng()
+	{
+		String phrase;
+		String tran;
+		Translation test = new Translation();
+		Tree tree = new Tree();
+		tree.createAlphabetTree();
+		System.out.println("Translate");
+		phrase = "tourner à droite et aller tout droit";
+		tran = test.translatePhrase(4, phrase);
 		System.out.println("Translation: " + tran);
 	}
 }

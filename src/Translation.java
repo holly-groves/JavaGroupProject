@@ -83,7 +83,7 @@ public class Translation {
 			{
 				tSplitWords[i] = splitWords[i];
 			}
-		        translation = tSplitWords[i] + " ";
+		        translation = translation + tSplitWords[i] + " ";
 		}
 		
 		return translation;
