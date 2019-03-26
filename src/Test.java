@@ -7,21 +7,26 @@
  *
  */
 public class Test {
-	
+
 	/**
 	 * Method to test creating the alphabet tree
 	 */
-	public void treeTest() 
+	public void runTest() 
 	{
 		System.out.println("TESTS\n");
-		testCreatingTree();
-		testDisplayingTreeEngToSpan();
-		testDisplayingTreeSpanToEng();
-		testTranslation();
-		testTranslateWord();
-		
+		//		testCreatingTree();
+		//		testDisplayingTreeEngToSpan();
+		//		testDisplayingTreeSpanToEng();
+//		testFileTranslation();
+//		testAddAndDeleteEngToSpan();
+//		testTranslateWord();
+		testTranslatePhraseEngToSpan();
+		testTranslatePhraseSpanToEng();
+		testTranslatePhraseEngToFre();
+		testTranslatePhraseFreToEng();
+
 	}
-	
+
 	/**
 	 * tests creating the alphabet tree
 	 */
@@ -36,7 +41,7 @@ public class Test {
 		test.printPreOrder(test.getRoot());
 		System.out.println("Test complete.");
 	}
-	
+
 	public void testDisplayingTreeEngToSpan()
 	{
 		Tree test = new Tree();
@@ -54,22 +59,30 @@ public class Test {
 		System.out.println("Test complete.");
 		System.out.println();
 	}
-	
+
 	/**
 	 * Automated testing for; translate file, add and delete method.
 	 */
-	public void testTranslation()
+	public void testFileTranslation()
 	{
 		Translation translation = new Translation();
 		System.out.println("Translate a file called test from english to spanish and rename it testTranslated.");
-		translation.testTranslateFileEngToSpan(); // will need a file called test.txt with a few random words on it.
-		System.out.println("\nTest add translation (add an english to spanish translation to the dictionary).");
-		translation.testAddEngToSpan();
-		System.out.println("\nDelete a translation (Delete an english to spanish translation called testWord and the translation testWordTranslated)");
-		translation.testDeleteEngToSpan();
+		translation.translateFileEngToSpan(true, "testToTranslate.txt", "testTranslated.txt"); // will need a file called test.txt with a few random words on it.
 		System.out.println("Test complete.");
+		System.out.println();
 	}
 	
+	public void testAddAndDeleteEngToSpan()
+	{
+		Translation translation = new Translation();
+		System.out.println("\nTest add translation (add an english to spanish translation to the dictionary).");
+		translation.addEngToSpan(true, "myWillToLive", "NonExistent");
+		System.out.println("\nDelete a translation (Delete an english to spanish translation called testWord and the translation testWordTranslated)");
+		translation.deleteEngToSpan(true, "myWillToLive");
+		System.out.println("Test complete.");
+		System.out.println();
+	}
+
 	public void testTranslateWord()
 	{
 		String word;
@@ -87,13 +100,79 @@ public class Test {
 		word = "open";
 		tran = test.translateWord(1, word);
 		System.out.println("Translation: " + tran);
-		
+
 		System.out.println();
 		word = "salir";
 		tran = test.translateWord(2, word);
 		System.out.println("Translation: " + tran);
-//		word = "zona";
-//		tran = test.translateWord(2, word);
-//		System.out.println("Translation: " + tran);
+		//		word = "zona";
+		//		tran = test.translateWord(2, word);
+		//		System.out.println("Translation: " + tran);
+
+		System.out.println();
+		word = "chicken";
+		tran = test.translateWord(3, word);
+		System.out.println("Translation: " + tran);
+
+		System.out.println();
+		word = "quintuplement";
+		tran = test.translateWord(4, word);
+		System.out.println("Translation: " + tran);
+
+		word = "bagarrer";
+		tran = test.translateWord(4, word);
+		System.out.println("Translation: " + tran);
+	}
+
+	public void testTranslatePhraseEngToSpan()
+	{
+		String phrase;
+		String tran;
+		Translation test = new Translation();
+		Tree tree = new Tree();
+		tree.createAlphabetTree();
+		System.out.println("Translate");
+		phrase = "i want chocolate cake";
+		tran = test.translatePhrase(1, phrase);
+		System.out.println("Translation: " + tran);
+	}
+	
+	public void testTranslatePhraseSpanToEng()
+	{
+		String phrase;
+		String tran;
+		Translation test = new Translation();
+		Tree tree = new Tree();
+		tree.createAlphabetTree();
+		System.out.println("Translate");
+		phrase = "buenos días a ti";
+		tran = test.translatePhrase(2, phrase);
+		System.out.println("Translation: " + tran);
+	}
+	
+	public void testTranslatePhraseEngToFre()
+	{
+		String phrase;
+		String tran;
+		Translation test = new Translation();
+		Tree tree = new Tree();
+		tree.createAlphabetTree();
+		System.out.println("Translate");
+		phrase = "the library is empty";
+		tran = test.translatePhrase(3, phrase);
+		System.out.println("Translation: " + tran);
+	}
+	
+	public void testTranslatePhraseFreToEng()
+	{
+		String phrase;
+		String tran;
+		Translation test = new Translation();
+		Tree tree = new Tree();
+		tree.createAlphabetTree();
+		System.out.println("Translate");
+		phrase = "tourner a droite et arreter";
+		tran = test.translatePhrase(4, phrase);
+		System.out.println("Translation: " + tran);
 	}
 }
