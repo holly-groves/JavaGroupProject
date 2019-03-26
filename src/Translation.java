@@ -47,6 +47,8 @@ public class Translation {
 	 * searchs for a word and if it is found, gets it's translation
 	 * 1 for english to spanish
 	 * 2 for spanish to english
+	 * 3 for english to french
+	 * 4 for french to english
 	 * @param lang int containing which langauge to translate to/from (see above)
 	 * @param ascii int containing the ascii value of the first letter of the word to be found
 	 * @param word int containing the word to be searched for
@@ -64,11 +66,24 @@ public class Translation {
 			wordFile = letter + "engtospanw.txt";
 			translationFile = letter + "engtospant.txt";
 		}
-		else if (lang == 2)
+		else if (lang == 2) // for a spanish to english translation
 		{
 			String letter = Character.toString((char) ascii);
 			wordFile = letter + "spantoengw.txt";
 			translationFile = letter + "spantoengt.txt";
+		}
+		else if (lang == 3) // for an english to french translation
+		{
+			String letter = Character.toString((char) ascii);
+			wordFile = letter + "engtofrew.txt";
+			translationFile = letter + "engtofret.txt";
+		}
+		
+		else if (lang == 4) // for a french to english translation
+		{
+			String letter = Character.toString((char) ascii);
+			wordFile = letter + "fretoengw.txt";
+			translationFile = letter + "fretoengt.txt";
 		}
 		
 		try
