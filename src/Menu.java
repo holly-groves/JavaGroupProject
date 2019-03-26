@@ -120,21 +120,11 @@ public class Menu {
 			}
 			else if (choice == 7) //display dictionaries
 			{
-				//Michael
 				Tree dictionary = new Tree();
 				dictionary.createAlphabetTree();
 				Scanner s = new Scanner(System.in);
-				System.out.println("Which dictionary would you like to view?");
-				System.out.println("1. English To Spanish");
-				System.out.println("2. Spanish To English");
-				System.out.println("3. English To French");
-				System.out.println("4. French To English");
-				while (!s.hasNextInt())
-				{
-					s.next();
-					System.out.println("Error: number invalid");
-				}
-				int i = s.nextInt();
+				
+				int i = getLang();
 				if (i == 1)
 				{
 					dictionary.displayTreeEngToSpan(dictionary.getRoot());
@@ -195,6 +185,8 @@ public class Menu {
 		int lang = 0;
 		System.out.println("1. English to Spanish");
 		System.out.println("2. Spanish to English");
+		System.out.println("3. English to French");
+		System.out.println("4. French to English");
 		System.out.println("Enter choice: ");
 		try
 		{
