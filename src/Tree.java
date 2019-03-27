@@ -52,7 +52,7 @@ public class Tree {
 		TreeNode currentRight;
 		boolean complete = false; //this will be used for the while loop and the return
 
-		/**
+		/*
 		 * Sets what the name of the translation files will be 
 		 */
 		String letter = Character.toString((char) letterId); //gets the letter of the ascii value

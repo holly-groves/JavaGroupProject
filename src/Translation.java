@@ -44,7 +44,7 @@ public class Translation {
 		}
 		
 		String translation = searchWord(lang, letterNode.getLetterId(), translate);
-		if (translation == null)
+		if (translation.equals(null))
 		{
 			translation = translate;
 		}
@@ -106,13 +106,17 @@ public class Translation {
 				if (fileLine.equals(word)) //the word has been found
 				{
 					found = true;
-					translation = getTranslation(lineCount, translationFile);
+					translation = getTranslation(lineCount, translationFile, word);
 					
 				}
 				else
 				{
 					lineCount++;
 					fileLine = bufferedReader.readLine();
+					if (fileLine.equals(null))
+					{
+						translation = word;
+					}
 				}
 			}while(!found);
 			bufferedReader.close();
@@ -131,7 +135,7 @@ public class Translation {
 	 * @param file String containing the name of the file to search for the translation for
 	 * @return Stirng containing the translation of the word
 	 */
-	public String getTranslation(int line, String file)
+	public String getTranslation(int line, String file, String word)
 	{
 		Tree tree = new Tree();
 		tree.createAlphabetTree();
@@ -165,6 +169,10 @@ public class Translation {
 		catch (IOException e)
 		{
 			System.out.println("Error reading from files: " + e);
+		}
+		if (translation.equals(null))
+		{
+			translation = word;
 		}
 		return translation;
 	}

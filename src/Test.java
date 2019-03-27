@@ -19,11 +19,11 @@ public class Test {
 		//		testDisplayingTreeSpanToEng();
 //		testFileTranslation();
 //		testAddAndDeleteEngToSpan();
-//		testTranslateWord();
-		testTranslatePhraseEngToSpan();
-		testTranslatePhraseSpanToEng();
-		testTranslatePhraseEngToFre();
-		testTranslatePhraseFreToEng();
+		testTranslateWord();
+//		testTranslatePhraseEngToSpan();
+//		testTranslatePhraseSpanToEng();
+//		testTranslatePhraseEngToFre();
+//		testTranslatePhraseFreToEng();
 
 	}
 
@@ -94,7 +94,7 @@ public class Test {
 		word = "skirt";
 		tran = test.translateWord(1, word);
 		System.out.println("Translation: " + tran);
-		word = "carrot";
+		word = "carro";
 		tran = test.translateWord(1, word);
 		System.out.println("Translation: " + tran);
 		word = "open";
