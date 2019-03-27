@@ -1,6 +1,5 @@
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -809,15 +808,13 @@ public class Translation {
 
 		try 
 		{
-			FileWriter f = new FileWriter(firstChar + "engtospanw.txt", true); // This adds to the file rather than writing over it so it can be added without deleting the file.
-			BufferedWriter b = new BufferedWriter(f);
-			PrintWriter p = new PrintWriter(b);
+			// This adds to the file rather than writing over it so it can be added without deleting the file.
+
+			PrintWriter p = new PrintWriter(new FileWriter(firstChar + "engtospanw.txt", true));
 			p.println(english);
 			p.close();
-
-			FileWriter g = new FileWriter(firstChar + "engtospant.txt", true); // Adds the translation to the translation file.
-			BufferedWriter c = new BufferedWriter(g);
-			PrintWriter q = new PrintWriter(c);
+			// Adds the translation to the translation file.
+			PrintWriter q = new PrintWriter(new FileWriter(firstChar + "engtospant.txt", true));
 			q.println(spanish);
 			q.close();
 		} catch (FileNotFoundException e) 
@@ -859,17 +856,14 @@ public class Translation {
 
 		try
 		{
-			FileWriter f = new FileWriter(firstChar + "spantoengw.txt", true);
-			BufferedWriter b = new BufferedWriter(f);
-			PrintWriter p = new PrintWriter(b);
+			PrintWriter p = new PrintWriter(new FileWriter(firstChar + "spantoengw.txt", true));
 			p.println(spanish);
 			p.close();
 
-			FileWriter g = new FileWriter(firstChar + "spantoengt.txt", true);
-			BufferedWriter c = new BufferedWriter(g);
-			PrintWriter q = new PrintWriter(c);
+			PrintWriter q = new PrintWriter(new FileWriter(firstChar + "spantoengt.txt", true));
 			q.println(english);
 			q.close();
+			
 		} catch (FileNotFoundException e) 
 		{
 			System.out.println("Error, file not found: " + e);
@@ -911,17 +905,16 @@ public class Translation {
 
 		try 
 		{
-			FileWriter f = new FileWriter(firstChar + "engtofrew.txt", true); // This adds to the file rather than writing over it so it can be added without deleting the file.
-			BufferedWriter b = new BufferedWriter(f);
-			PrintWriter p = new PrintWriter(b);
-			p.println(english);
+			// This adds to the file rather than writing over it so it can be added without deleting the file.
+			PrintWriter p = new PrintWriter(new FileWriter(firstChar + "engtofrew.txt", true));
+			p.println("\n" + english);
 			p.close();
 
-			FileWriter g = new FileWriter(firstChar + "engtofret.txt", true); // Adds the translation to the translation file.
-			BufferedWriter c = new BufferedWriter(g);
-			PrintWriter q = new PrintWriter(c);
-			q.println(french);
+			// Adds the translation to the translation file.
+			PrintWriter q = new PrintWriter(new FileWriter(firstChar + "engtofret.txt", true));
+			q.println("\n" + french);
 			q.close();
+			
 		} catch (FileNotFoundException e) 
 		{
 			System.out.println("Error, file not found: " + e);
@@ -962,15 +955,11 @@ public class Translation {
 
 		try
 		{
-			FileWriter f = new FileWriter(firstChar + "fretoengw.txt", true);
-			BufferedWriter b = new BufferedWriter(f);
-			PrintWriter p = new PrintWriter(b);
+			PrintWriter p = new PrintWriter(new FileWriter(firstChar + "fretoengw.txt", true));
 			p.println(french);
 			p.close();
 
-			FileWriter g = new FileWriter(firstChar + "fretoengt.txt", true);
-			BufferedWriter c = new BufferedWriter(g);
-			PrintWriter q = new PrintWriter(c);
+			PrintWriter q = new PrintWriter(new FileWriter(firstChar + "fretoengt.txt", true));
 			q.println(english);
 			q.close();
 		} catch (FileNotFoundException e) 
@@ -988,16 +977,13 @@ public class Translation {
 	 * The user inputs the file name and the name of the Translated file.
 	 * Then the file is read in line by line and parsed so each word can be translated and printed.
 	 */
-	public void translateFileEngToSpan(boolean test, String testWord, String testWordTwo) 
+	public void translateFileEngToSpan(boolean test, String testWord) 
 	{
 		tree.createAlphabetTree();
 		FileReader fileReader;
 		BufferedReader bufferedReader;
 		String nextLine;
-		FileOutputStream outputStream;
-		PrintWriter printWriter;
 		String file;
-		String translatedFile;
 
 		if (test == false)
 		{
@@ -1006,37 +992,29 @@ public class Translation {
 			file = s.nextLine();
 			s.close();
 
-			System.out.println("Please enter the name you would like the translated file to have: "); // Enter the name of the new translated file.
-			Scanner r = new Scanner(System.in);
-			translatedFile = s.nextLine();
-			r.close();
 		} else 
 		{
 			file = testWord;
-			translatedFile = testWordTwo;
 		}
 
 		try 
 		{
 			fileReader = new FileReader(file);
 			bufferedReader = new BufferedReader(fileReader);
-			outputStream = new FileOutputStream(translatedFile);
-			printWriter = new PrintWriter(outputStream);
 
 			nextLine = bufferedReader.readLine(); // Read in the first line.
-			while (nextLine.equals(null)) // Whilst the line is not blank.
+			nextLine.toLowerCase();
+			do // Whilst the line is not blank.
 			{
 				String[] line = nextLine.split("\\s"); // Split the line into separate words for translation.
 				for (int i = 0; i < line.length; i++) // Do for each word in the line.
 				{
 					String temp = translateWord(1, line[i]); // Translate the word.
-					printWriter.print(temp + " "); //Print to file.
 					System.out.print(temp + " "); //Print to Console.
 				}
 				nextLine = bufferedReader.readLine(); //Read in the next line.
-			}
+			} while (!(nextLine == null));
 			bufferedReader.close();
-			printWriter.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
@@ -1049,17 +1027,14 @@ public class Translation {
 	/**
 	 * The same as the previous method but it translates the words from spanish to english.
 	 */
-	public void translateFileSpanToEng(boolean test, String testWord, String testWordTwo) 
+	public void translateFileSpanToEng(boolean test, String testWord) 
 	{
 		tree.createAlphabetTree();
 		FileReader fileReader;
 		BufferedReader bufferedReader;
 		String nextLine;
-		FileOutputStream outputStream;
-		PrintWriter printWriter;
 
 		String file;
-		String translatedFile;
 		
 		if (test == false)
 		{
@@ -1068,36 +1043,28 @@ public class Translation {
 		file = s.nextLine();
 		s.close();
 		
-		System.out.println("Please enter the name you would like the translated file to have: ");
-		Scanner r = new Scanner(System.in);
-		translatedFile = s.nextLine();
-		r.close();
 		} else
 		{
 			file = testWord;
-			translatedFile = testWordTwo;
 		}
 		try 
 		{
 			fileReader = new FileReader(file);
 			bufferedReader = new BufferedReader(fileReader);
-			outputStream = new FileOutputStream(translatedFile);
-			printWriter = new PrintWriter(outputStream);
 
 			nextLine = bufferedReader.readLine();
-			while (nextLine.equals(null))
+			nextLine.toLowerCase();
+			do
 			{
 				String[] line = nextLine.split("\\s");
 				for (int i = 0; i < line.length; i++)
 				{
 					String temp = translateWord(2, line[i]);
-					printWriter.print(temp + " "); 
 					System.out.print(temp + " ");
 				}
 				nextLine = bufferedReader.readLine();
-			}
+			} while (!(nextLine == null));
 			bufferedReader.close();
-			printWriter.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
@@ -1112,17 +1079,14 @@ public class Translation {
 	 * The user inputs the file name and the name of the Translated file.
 	 * Then the file is read in line by line and parsed so each word can be translated and printed.
 	 */
-	public void translateFileEngToFre(boolean test, String testWord, String testWordTwo)
+	public void translateFileEngToFre(boolean test, String testWord)
 	{
 		tree.createAlphabetTree();
 		FileReader fileReader;
 		BufferedReader bufferedReader;
 		String nextLine;
-		FileOutputStream outputStream;
-		PrintWriter printWriter;
 
 		String file;
-		String translatedFile;
 		
 		if (test == false)
 		{
@@ -1133,35 +1097,30 @@ public class Translation {
 		
 			System.out.println("Please enter the name you would like the translated file to have: "); // Enter the name of the new translated file.
 			Scanner r = new Scanner(System.in);
-			translatedFile = s.nextLine();
 			r.close();
 		} else 
 		{
 			file = testWord;
-			translatedFile = testWordTwo;
 		}
 		
 		try 
 		{
 			fileReader = new FileReader(file);
 			bufferedReader = new BufferedReader(fileReader);
-			outputStream = new FileOutputStream(translatedFile);
-			printWriter = new PrintWriter(outputStream);
 
 			nextLine = bufferedReader.readLine(); // Read in the first line.
-			while (nextLine.equals(null)) // Whilst the line is not blank.
+			nextLine.toLowerCase();
+			do // Whilst the line is not blank.
 			{
 				String[] line = nextLine.split("\\s"); // Split the line into separate words for translation.
 				for (int i = 0; i < line.length; i++) // Do for each word in the line.
 				{
 					String temp = translateWord(3, line[i]); // Translate the word.
-					printWriter.print(temp + " "); //Print to file.
 					System.out.print(temp + " "); //Print to Console.
 				}
 				nextLine = bufferedReader.readLine(); //Read in the next line.
-			}
+			} while (!(nextLine == null));
 			bufferedReader.close();
-			printWriter.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
@@ -1174,17 +1133,14 @@ public class Translation {
 	/**
 	 * The same as the previous method but it translates the words from spanish to english.
 	 */
-	public void translateFileFreToEng(boolean test, String testWord, String testWordTwo) 
+	public void translateFileFreToEng(boolean test, String testWord) 
 	{
 		tree.createAlphabetTree();
 		FileReader fileReader;
 		BufferedReader bufferedReader;
 		String nextLine;
-		FileOutputStream outputStream;
-		PrintWriter printWriter;
 
 		String file;
-		String translatedFile;
 		
 		if (test == false)
 		{
@@ -1195,35 +1151,29 @@ public class Translation {
 		
 			System.out.println("Please enter the name you would like the translated file to have: ");
 			Scanner r = new Scanner(System.in);
-			translatedFile = s.nextLine();
 			r.close();
 		} else 
 		{
 			file = testWord;
-			translatedFile = testWordTwo;
 		}
 
 		try 
 		{
 			fileReader = new FileReader(file);
 			bufferedReader = new BufferedReader(fileReader);
-			outputStream = new FileOutputStream(translatedFile);
-			printWriter = new PrintWriter(outputStream);
-
+			
 			nextLine = bufferedReader.readLine();
-			while (nextLine.equals(null))
+			do
 			{
 				String[] line = nextLine.split("\\s");
 				for (int i = 0; i < line.length; i++)
 				{
 					String temp = translateWord(4, line[i]);
-					printWriter.print(temp + " "); 
 					System.out.print(temp + " ");
 				}
 				nextLine = bufferedReader.readLine();
-			}
+			} while (!(nextLine == null));
 			bufferedReader.close();
-			printWriter.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("Error, file not found: " + e);
 			e.printStackTrace();
