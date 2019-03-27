@@ -126,19 +126,19 @@ public class Menu {
 		{
 			if (lang == 1)
 			{
-				tran.translateFileEngToSpan(false, "blank", "blank");
+				tran.translateFileEngToSpan(false, "testToTranslateEng");
 			}
 			if (lang == 2)
 			{
-//				tran.translateFileSpanToEng();
+				tran.translateFileSpanToEng(false, "testToTranslateSpan");
 			}
 			if (lang == 3)
 			{
-//				tran.translateFileEngToFre();
+			tran.translateFileEngToFre(false, "testToTranslateEng");
 			}
 			if (lang == 4)
 			{
-//				tran.translateFileFreToEng();
+				tran.translateFileFreToEng(false, "TestToTranslateFre");
 			}
 		}
 		else if (opt == 4) //display dictionary
@@ -184,38 +184,38 @@ public class Menu {
 		{
 			if (lang == 1)
 			{
-				tran.addEngToSpan(false, "blank", "blank");
+				tran.addEngToSpan(false, "theWillToLive", "nonExistant");
 			}
 			if (lang == 2)
 			{
-//				tran.addSpanToEng();
+				tran.addSpanToEng(false, "theWillToLive", "nonExistant");
 			}
 			if (lang == 3)
 			{
-//				tran.addEngToFre();
+				tran.addEngToFre(false, "theWillToLive", "nonExistant");
 			}
 			if (lang == 4)
 			{
-//				tran.addFreToEng();
+				tran.addFreToEng(false, "theWillToLive", "nonExistant");
 			}
 		}
 		else if (opt == 7) //remove a translation
 		{
 			if (lang == 1)
 			{
-				tran.deleteEngToSpan(false, "blank");
+				tran.deleteEngToSpan(false, "theWillToLive");
 			}
 			if (lang == 2)
 			{
-//				tran.deleteSpanToEng();
+				tran.deleteSpanToEng(false, "theWillToLive");
 			}
 			if (lang == 3)
 			{
-//				tran.deleteEngToFre();
+				tran.deleteEngToFre(false, "theWillToLive");
 			}
 			if (lang == 4)
 			{
-//				tran.deleteFreToEng();
+				tran.deleteFreToEng(false, "theWillToLive");
 			}
 		}
 		else

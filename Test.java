@@ -24,10 +24,10 @@ public class Test {
 //		testDisplayingTreeSpanToEng();
 //		testTranslateWord();
 		
-//		testTranslatePhraseEngToSpan();
-//		testTranslatePhraseSpanToEng();
-//		testTranslatePhraseEngToFre();
-//		testTranslatePhraseFreToEng();
+		testTranslatePhraseEngToSpan();
+		testTranslatePhraseSpanToEng();
+		testTranslatePhraseEngToFre();
+		testTranslatePhraseFreToEng();
 		
 
 //		testAddAndDeleteEngToSpan();
@@ -35,7 +35,7 @@ public class Test {
 //		testAddAndDeleteEngToFre();
 //		testAddAndDeleteFreToEng();
 
-		testFileTranslationEngToSpan();
+//		testFileTranslationEngToSpan();
 //		testFileTranslationSpanToEng();
 //		testFileTranslationEngToFre();
 //		testFileTranslationFreToEng();
@@ -74,122 +74,6 @@ public class Test {
 		System.out.println();
 	}
 
-//	/**
-//	 * Automated testing for; translate file, add and delete method.
-//	 */
-//	public void testFileTranslationEngToSpan()
-//	{
-//		Translation translation = new Translation();
-//		System.out.println("Translate a file called test from english to spanish and rename it testTranslated.");
-//		translation.translateFileEngToSpan(true, "testToTranslate.txt", "testTranslated.txt"); // will need a file called test.txt with a few random words on it.
-//		System.out.println("Test complete.");
-//		System.out.println();
-//	}
-//	
-//	public void testFileTranslationSpanToEng()
-//	{
-//		Translation translation = new Translation();
-//		System.out.println("Translate a file called test from spanish to english and rename it testTranslated.");
-//		translation.translateFileSpanToEng(true, "testToTranslate.txt", "testTranslated.txt"); // will need a file called test.txt with a few random words on it.
-//		System.out.println("Test complete.");
-//		System.out.println();
-//	}
-//	
-//	public void testFileTranslationEngToFre()
-//	{
-//		Translation translation = new Translation();
-//		System.out.println("Translate a file called test from english to french and rename it testTranslated.");
-//		translation.translateFileEngToFre(true, "testToTranslate.txt", "testTranslated.txt"); // will need a file called test.txt with a few random words on it.
-//		System.out.println("Test complete.");
-//		System.out.println();
-//	}
-//	
-//	public void testFileTranslationFreToEng()
-//	{
-//		Translation translation = new Translation();
-//		System.out.println("Translate a file called test from french to english and rename it testTranslated.");
-//		translation.translateFileFreToEng(true, "testToTranslate.txt", "testTranslated.txt"); // will need a file called test.txt with a few random words on it.
-//		System.out.println("Test complete.");
-//		System.out.println();
-//	}
-//	
-//	public void testAddAndDeleteEngToSpan()
-//	{
-//		Translation translation = new Translation();
-//		System.out.println("Test add translation (add an english to spanish translation to the dictionary).");
-//		translation.addEngToSpan(true, "engToSpanTest", "translation");
-//		
-//		String wordFile = testPrintFile("e", "engToSpan", "w");
-//		String tranFile = testPrintFile("t", "engToSpan", "t");
-//		
-//		FileReader fileReaderWord = null;
-//		BufferedReader bufferedReaderWord = null;
-//		FileReader fileReaderTran = null;
-//		BufferedReader bufferedReaderTran = null;
-//		
-//		try
-//		{
-//			fileReaderWord = new FileReader(wordFile);
-//			bufferedReaderWord = new BufferedReader(fileReaderWord);
-//			fileReaderTran = new FileReader(tranFile);
-//			bufferedReaderTran = new BufferedReader(fileReaderTran);
-//			
-//			String nextWord = bufferedReaderWord.readLine();
-//			String nextTran = bufferedReaderTran.readLine();
-//			
-//			while (nextWord != null)
-//			{
-//				System.out.println(nextWord + " - " + nextTran);
-//				nextWord = bufferedReaderWord.readLine();
-//				nextTran = bufferedReaderTran.readLine();
-//			}
-//			bufferedReaderWord.close(); 
-//			bufferedReaderTran.close();
-//		}
-//		catch (IOException e)
-//		{
-//			System.out.println("Error reading from file: " + e);
-//		}
-//		
-//		System.out.println("Delete a translation (Delete an english to spanish translation called testWord and the translation testWordTranslated)");
-//		translation.deleteEngToSpan(true, "engToSpanTest");
-//		System.out.println("Test complete.");
-//		System.out.println();
-//	}
-//	
-//	public void testAddAndDeleteSpanToEng()
-//	{
-//		Translation translation = new Translation();
-//		System.out.println("\nTest add translation (add an spanish to english translation to the dictionary).");
-//		translation.addSpanToEng(true, "myWillToLive", "NonExistent");
-//		System.out.println("\nDelete a translation (Delete an english to spanish translation called testWord and the translation testWordTranslated)");
-//		translation.deleteSpanToEng(true, "myWillToLive");
-//		System.out.println("Test complete.");
-//		System.out.println();
-//	}
-//	
-//	public void testAddAndDeleteEngToFre()
-//	{
-//		Translation translation = new Translation();
-//		System.out.println("\nTest add translation (add an english to spanish translation to the dictionary).");
-//		translation.addEngToFre(true, "myWillToLive", "NonExistent");
-//		System.out.println("\nDelete a translation (Delete an english to french translation called testWord and the translation testWordTranslated)");
-//		translation.deleteEngToFre(true, "myWillToLive");
-//		System.out.println("Test complete.");
-//		System.out.println();
-//	}
-//	
-//	public void testAddAndDeleteFreToEng()
-//	{
-//		Translation translation = new Translation();
-//		System.out.println("\nTest add translation (add an spanish to english translation to the dictionary).");
-//		translation.addFreToEng(true, "myWillToLive", "NonExistent");
-//		System.out.println("\nDelete a translation (Delete an english to french translation called testWord and the translation testWordTranslated)");
-//		translation.deleteFreToEng(true, "myWillToLive");
-//		System.out.println("Test complete.");
-//		System.out.println();
-//	}
-
 	/**
 	 * Automated testing for translating a English file into an Spanish file
 	 */
@@ -199,6 +83,7 @@ public class Test {
 		BufferedReader br;
 		System.out.println("Translate a file called test from english to spanish and rename it testTranslated.");
 		System.out.println("Original File: ");
+		System.out.println("");
 		try 
 		{
 			br = new BufferedReader(new FileReader("testToTranslateEng.txt"));
@@ -214,12 +99,12 @@ public class Test {
 				System.out.println("Error reading from files: " + e);
 				e.printStackTrace();
 		}
-		translation.translateFileEngToSpan(true, "testToTranslateEng.txt", "testTranslated.txt"); // will need a file called test.txt with a few random words on it.
+		translation.translateFileEngToSpan(true, "testToTranslateEng.txt"); // will need a file called test.txt with a few random words on it.
 		System.out.println("Translated File: ");
 		System.out.println("");
 		try 
 		{
-			br = new BufferedReader(new FileReader("testToTranslateEngToSpan.txt"));
+			br = new BufferedReader(new FileReader("testTranslatedEngToSpan.txt"));
 			String line = null;
 			while((line = br.readLine()) != null)
 			{
@@ -261,7 +146,7 @@ public class Test {
 				System.out.println("Error reading from files: " + e);
 				e.printStackTrace();
 		}
-		translation.translateFileSpanToEng(true, "testToTranslateSpan.txt", "testTranslated.txt"); // will need a file called test.txt with a few random words on it.
+		translation.translateFileSpanToEng(true, "testToTranslateSpan.txt"); // will need a file called test.txt with a few random words on it.
 		System.out.println("Translated File: ");
 		System.out.println("");
 		try 
@@ -291,8 +176,7 @@ public class Test {
 		Translation translation = new Translation();
 		BufferedReader br;
 		System.out.println("Translate a file called test from english to french and rename it testTranslated.");
-		System.out.println("Original File: ");
-		System.out.println("");
+		System.out.println("Original File:\n");
 		try 
 		{
 			br = new BufferedReader(new FileReader("testToTranslateEng.txt"));
@@ -308,9 +192,8 @@ public class Test {
 				System.out.println("Error reading from files: " + e);
 				e.printStackTrace();
 		}
-		translation.translateFileEngToFre(true, "testToTranslateEng.txt", "testTranslated.txt"); // will need a file called test.txt with a few random words on it.
-		System.out.println("Translated File: ");
-		System.out.println("");
+		translation.translateFileEngToFre(true, "testToTranslateEng.txt"); // will need a file called test.txt with a few random words on it.
+		System.out.println("Translated File: \n");
 		try 
 		{
 			br = new BufferedReader(new FileReader("testToTranslateEngToFre.txt"));
@@ -355,7 +238,7 @@ public class Test {
 				System.out.println("Error reading from files: " + e);
 				e.printStackTrace();
 		}
-		translation.translateFileFreToEng(true, "testToTranslateFre.txt", "testTranslated.txt"); // will need a file called test.txt with a few random words on it.
+		translation.translateFileFreToEng(true, "testToTranslateFre.txt"); // will need a file called test.txt with a few random words on it.
 		System.out.println("Translated File: ");
 		System.out.println("");
 		try 
@@ -607,7 +490,8 @@ public class Test {
 		System.out.println("Test complete.");
 		System.out.println();
 	}
-	
+
+
 	public void testTranslateWord()
 	{
 		String word;
@@ -653,6 +537,7 @@ public class Test {
 		tran = test.translateWord(4, word);
 		System.out.println("Word: " + word + " Translation: " + tran);
 	}
+
 
 	public void testTranslatePhraseEngToSpan()
 	{
@@ -704,11 +589,5 @@ public class Test {
 		phrase = "tourner a droite et arreter";
 		tran = test.translatePhrase(4, phrase);
 		System.out.println("Translation: " + tran);
-	}
-	
-	public String testPrintFile(String letter, String lang, String direction)
-	{
-		String file = letter + lang + direction + ".txt";
-		return file;
 	}
 }
