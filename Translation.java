@@ -65,7 +65,7 @@ public class Translation {
 	{
 		Tree tree = new Tree();
 		tree.createAlphabetTree();
-		String translation = "";
+		String translation = word;
 		String wordFile = "";
 		String translationFile = "";
 
@@ -96,33 +96,36 @@ public class Translation {
 
 		try
 		{
-			Scanner input = new Scanner(wordFile);
+			FileReader filereader = new FileReader(wordFile);
+			BufferedReader bufferedReader = new BufferedReader(filereader);
 
-	         File file = new File(input.nextLine());
 
-	        input = new Scanner(file);
+			String fileLine = bufferedReader.readLine();
 			int lineCount = 1;
 			boolean found = false;
 			do
 			{
-				if (file.equals(word)) //the word has been found
+				if (fileLine != null)
 				{
-					found = true;
-					translation = getTranslation(lineCount, translationFile, word);
+					if (fileLine.equals(word)) //the word has been found
+					{
+						found = true;
+						translation = getTranslation(lineCount, translationFile, word);
 
-				}
-				else if( input.hasNextLine() == false) {
-					translation = word;
-					break;
+					}
+					else //word hasn't been found yet
+					{
+						lineCount++;
+						fileLine = bufferedReader.readLine();
+					}
 				}
 				else
 				{
-					lineCount++;
-					file = new File(input.nextLine());
-
+					found = true;
 				}
+
 			}while(!found);
-			input.close();
+			bufferedReader.close();
 		}
 		catch (IOException e)
 		{
@@ -212,7 +215,7 @@ public class Translation {
 			{
 				tSplitWords[i] = splitWords[i];
 			}
-		        translation = translation + tSplitWords[i] + " ";
+			translation = translation + tSplitWords[i] + " ";
 		}
 
 		return translation;
@@ -227,7 +230,7 @@ public class Translation {
 		tree.displayTreeSpanToEng(tree.getRoot());
 	}
 
-/**
+	/**
 	 * Allows the user to delete an English word and its translation from the dictionary.
 	 * The user enters the word and the word is than translated, both the word and its translations are then found and deleted.
 	 */
@@ -1021,7 +1024,7 @@ public class Translation {
 			printWriter = new PrintWriter(outputStream);
 
 			nextLine = bufferedReader.readLine(); // Read in the first line.
-			while (nextLine != null) // Whilst the line is not blank.
+			while (nextLine.equals(null)) // Whilst the line is not blank.
 			{
 				String[] line = nextLine.split("\\s"); // Split the line into separate words for translation.
 				for (int i = 0; i < line.length; i++) // Do for each word in the line.
@@ -1029,8 +1032,8 @@ public class Translation {
 					String temp = translateWord(1, line[i]); // Translate the word.
 					printWriter.print(temp + " "); //Print to file.
 					System.out.print(temp + " "); //Print to Console.
-					nextLine = bufferedReader.readLine(); //Read in the next line.
 				}
+				nextLine = bufferedReader.readLine(); //Read in the next line.
 			}
 			bufferedReader.close();
 			printWriter.close();
@@ -1082,7 +1085,7 @@ public class Translation {
 			printWriter = new PrintWriter(outputStream);
 
 			nextLine = bufferedReader.readLine();
-			while (nextLine != null)
+			while (nextLine.equals(null))
 			{
 				String[] line = nextLine.split("\\s");
 				for (int i = 0; i < line.length; i++)
@@ -1090,8 +1093,8 @@ public class Translation {
 					String temp = translateWord(2, line[i]);
 					printWriter.print(temp + " "); 
 					System.out.print(temp + " ");
-					nextLine = bufferedReader.readLine();
 				}
+				nextLine = bufferedReader.readLine();
 			}
 			bufferedReader.close();
 			printWriter.close();
@@ -1146,7 +1149,7 @@ public class Translation {
 			printWriter = new PrintWriter(outputStream);
 
 			nextLine = bufferedReader.readLine(); // Read in the first line.
-			while (nextLine != null) // Whilst the line is not blank.
+			while (nextLine.equals(null)) // Whilst the line is not blank.
 			{
 				String[] line = nextLine.split("\\s"); // Split the line into separate words for translation.
 				for (int i = 0; i < line.length; i++) // Do for each word in the line.
@@ -1154,8 +1157,8 @@ public class Translation {
 					String temp = translateWord(3, line[i]); // Translate the word.
 					printWriter.print(temp + " "); //Print to file.
 					System.out.print(temp + " "); //Print to Console.
-					nextLine = bufferedReader.readLine(); //Read in the next line.
 				}
+				nextLine = bufferedReader.readLine(); //Read in the next line.
 			}
 			bufferedReader.close();
 			printWriter.close();
@@ -1208,7 +1211,7 @@ public class Translation {
 			printWriter = new PrintWriter(outputStream);
 
 			nextLine = bufferedReader.readLine();
-			while (nextLine != null)
+			while (nextLine.equals(null))
 			{
 				String[] line = nextLine.split("\\s");
 				for (int i = 0; i < line.length; i++)
@@ -1216,8 +1219,8 @@ public class Translation {
 					String temp = translateWord(4, line[i]);
 					printWriter.print(temp + " "); 
 					System.out.print(temp + " ");
-					nextLine = bufferedReader.readLine();
 				}
+				nextLine = bufferedReader.readLine();
 			}
 			bufferedReader.close();
 			printWriter.close();

@@ -25,7 +25,7 @@ public class Menu {
 		
 		do
 		{
-			System.out.println("Tranlsator");
+			System.out.println("\nTranlsator");
 			System.out.println("1. English to Spanish");
 			System.out.println("2. Spanish to English");
 			System.out.println("3. English to French");
@@ -130,15 +130,15 @@ public class Menu {
 			}
 			if (lang == 2)
 			{
-				tran.translateFileSpanToEng(false, "blank", "blank");
+//				tran.translateFileSpanToEng();
 			}
 			if (lang == 3)
 			{
-				tran.translateFileEngToFre(false, "blank", "blank");
+//				tran.translateFileEngToFre();
 			}
 			if (lang == 4)
 			{
-				tran.translateFileFreToEng(false, "blank", "blank");
+//				tran.translateFileFreToEng();
 			}
 		}
 		else if (opt == 4) //display dictionary
@@ -188,15 +188,15 @@ public class Menu {
 			}
 			if (lang == 2)
 			{
-				tran.addSpanToEng(false, "blank", "blank");
+//				tran.addSpanToEng();
 			}
 			if (lang == 3)
 			{
-				tran.addEngToFre(false, "blank", "blank");
+//				tran.addEngToFre();
 			}
 			if (lang == 4)
 			{
-				tran.addFreToEng(false, "blank", "blank");
+//				tran.addFreToEng();
 			}
 		}
 		else if (opt == 7) //remove a translation
@@ -207,15 +207,15 @@ public class Menu {
 			}
 			if (lang == 2)
 			{
-				tran.deleteSpanToEng(false, "blank");
+//				tran.deleteSpanToEng();
 			}
 			if (lang == 3)
 			{
-				tran.deleteEngToFre(false, "blank");
+//				tran.deleteEngToFre();
 			}
 			if (lang == 4)
 			{
-				tran.deleteFreToEng(false, "blank");
+//				tran.deleteFreToEng();
 			}
 		}
 		else

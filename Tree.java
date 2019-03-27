@@ -52,7 +52,7 @@ public class Tree {
 		TreeNode currentRight;
 		boolean complete = false; //this will be used for the while loop and the return
 
-		/**
+		/*
 		 * Sets what the name of the translation files will be 
 		 */
 		String letter = Character.toString((char) letterId); //gets the letter of the ascii value
@@ -281,80 +281,6 @@ public class Tree {
 		String letter = Character.toString((char) id);
 		System.out.println(letter);
 	}
-	
-//	/**
-//	 * Method used to display all the dictionaries
-//	 * @param root TreeNode containing the root of the tree
-//	 */
-//	public void displayTree(TreeNode root)
-//	{
-//		FileReader fileReader1 = null;
-//		BufferedReader bufferedReader1 = null;
-//		String nextLine1;
-//		FileReader fileReader2 = null;
-//		BufferedReader bufferedReader2 = null;
-//		String nextLine2;
-//		
-//		TreeNode current = root;
-//		boolean complete = false;
-//		while (!complete)
-//		{
-//			if (current == null)
-//			{
-//				complete = true;
-//			}
-//			else
-//			{
-//				TreeNode currentLeft = current.getLeft();
-//				TreeNode currentRight = current.getRight();
-//
-//				if (currentLeft != null)
-//				{
-//					displayTree(currentLeft);
-//				}
-//
-//				int id = current.getLetterId();
-//				String letter = Character.toString((char) id);
-//				String fileEngToSpanWords = letter + "engtospanw.txt";
-//				String fileEngToSpanTranslations = letter + "engtospant.txt";
-//				System.out.println(letter);
-//				System.out.println();
-//				
-//				try
-//				{
-//					fileReader1 = new FileReader(fileEngToSpanWords);
-//					bufferedReader1 = new BufferedReader(fileReader1);
-//					nextLine1 = bufferedReader1.readLine();
-//					
-//					fileReader2 = new FileReader(fileEngToSpanTranslations);
-//					bufferedReader2 = new BufferedReader(fileReader2);
-//					nextLine2 = bufferedReader2.readLine();
-//					
-//					while (nextLine1 != null || nextLine2 != null)
-//					{
-//						System.out.println(nextLine1 + " - " + nextLine2);
-//						nextLine1 = bufferedReader1.readLine();
-//						nextLine2 = bufferedReader2.readLine();
-//					}
-//					bufferedReader1.close();
-//				}
-//				
-//				catch (IOException e)
-//				{
-//					System.out.println("IO Error reading from file: " + e);
-//				}				
-//
-//				System.out.println();
-//				
-//    			if (currentRight != null)
-//				{
-//					displayTree(currentRight);
-//				}
-//
-//				complete = true;
-//			}
-//		}
-//	}
 	
 	/**
 	 * Method used to display the dictionary for English into Spanish
@@ -659,6 +585,5 @@ public class Tree {
 			}
 		}
 	}
-
 
 }
